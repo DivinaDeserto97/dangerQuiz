@@ -39,4 +39,9 @@ function fetchQuestionIdSequence($topic, $questionNum, $dbConnection) {
     return $rowQs;
 }
 
+function formMaxCount(){
+    $countMax = intval($_POST['timerQuestion']);
+    return $countMax;
+}
+
 ?>
