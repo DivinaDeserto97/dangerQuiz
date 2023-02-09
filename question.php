@@ -76,9 +76,11 @@
                         questionNum, lastQuestionIndex: mit PHP gesetzt
                         indexStep: mit JavaScript setIntValue(fieldId, value) verändert
                 -->
-                <input type='hidden' id='questionNum' value="<?php echo $quiz['questionNum']; ?>">
-                <input type='hidden' id='lastQuestionIndex' name='lastQuestionIndex' value='<?php echo $currentQuestionIndex; ?> '>
-                <input type='hidden' id='indexStep' name='indexStep' value='1'>
+                <input id='questionNum' type='hidden' value="<?php echo $quiz['questionNum']; ?>">
+                <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden' value='<?php echo $currentQuestionIndex; ?> '>
+                <input id='indexStep' name='indexStep' type='hidden' value='1'>
+                <?php $maxCount = formMaxCount();?>
+                <input id='timerQuestion' name='timerQuestion' type='hidden' value='<?php echo $maxCount; ?>'>
 
                 <!-- Validierungswarnung -->
                 <p id='validation-warning' class='warning'></p>
@@ -86,6 +88,7 @@
                 <p class='spacer'></p>
 
                 <?php require('includes/footer.php'); ?>
+                <script>startCountdown();</script>
             </form>
         </div>
     </div>
