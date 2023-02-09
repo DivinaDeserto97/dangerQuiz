@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <?php require('includes/haeder.php')?>
+    <?php require('includes/header.php')?>
     <?php
         /*
             Bestimme die Anzahl der erreichten Punkte. Dazu wird das
