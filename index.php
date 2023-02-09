@@ -18,7 +18,7 @@
         <form id='quiz-form' action='question.php' method='post' onsubmit="return navigate('next');">
             <!-- Themenwahl -->
             <label for='quiz-topic' class='form-label'>Quiz Thema - bitte auswählen!</label>
-            <select class='form-select' aria-label='Default select example' id='topic' name='topic'>
+            <select id='topic' name='topic' class='form-select' aria-label='Default select example'>
             <option value='music'>Music</option>
                 <option value='ch-norris'>Chuck Norris</option>
                 <option value='animals'>Animals</option>
@@ -42,8 +42,8 @@
                    style='width:100px'  class='form-control'>
 
             <!-- Zeit Pro Frage -->
-            <label for='timeQuestion' style='margin-top:150px;' class='form-label'>Time per question:</label>
-            <input id='timeQuestion' name='timeQuestion' type='number' 
+            <label for='timerQuestion' style='margin-top:20px;' class='form-label'>Time per question:</label>
+            <input id='timerQuestion' name='timerQuestion' type='number' 
                    min='10' max='90' value='30'
                    style='width:100px'  class='form-control'>      
 
@@ -52,8 +52,8 @@
                     lastQuestionIndex: mit PHP gesetzt
                     indexStep: mit JavaScript setIntValue(fieldId, value) verändert
             -->
-            <input type='hidden' id='lastQuestionIndex' name='lastQuestionIndex' value='-1'>
-            <input type='hidden' id='indexStep' name='indexStep' value='1'>
+            <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden'  value='-1'>
+            <input id='indexStep' name='indexStep' type='hidden' value='1'>
 
             <!-- Validierungswarnung -->
             <p id='validation-warning' class='warning'></p>
