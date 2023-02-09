@@ -9,9 +9,9 @@ function buttonChangeBrightDark(){
   }
   function changeDark(){
     /* Pictures Bright off */
-    document.getElementById('headerWrapperDay').style.display = 'none'; 
+    document.getElementById('logo').style.display = 'none'; 
     /* Pictures Dark ein */
-    document.getElementById('headerWrapperNight').style.display = 'inline-flex';
+    document.getElementById('logo').style.display = 'inline-flex';
   }
   function changeBright(){
     /* Pictures Bright off */

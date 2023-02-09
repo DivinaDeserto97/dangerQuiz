@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <?php require('includes/haeder.php');?>
+    <?php require('includes/header.php');?>
     <!-- FORMULAR 'Themenwahl' -->
     <div style='padding: 20px;'>
         <form id='quiz-form' action='question.php' method='post' onsubmit="return navigate('next');">
@@ -36,10 +36,16 @@
             </select>
 
             <!-- Anzahl Fragen -->
-            <label style='margin-top:20px;' for='questionNum' class='form-label'>Number of questions</label>
-            <input style='width:100px' type='number' class='form-control' 
-                   id='questionNum' name='questionNum' 
-                   min='2' max='40' value='10'>
+            <label for='questionNum' style='margin-top:20px;' class='form-label'>Number of questions:</label>
+            <input id='questionNum' name='questionNum' type='number' 
+                   min='2' max='40' value='10'
+                   style='width:100px'  class='form-control'>
+
+            <!-- Zeit Pro Frage -->
+            <label for='timeQuestion' style='margin-top:150px;' class='form-label'>Time per question:</label>
+            <input id='timeQuestion' name='timeQuestion' type='number' 
+                   min='10' max='90' value='30'
+                   style='width:100px'  class='form-control'>      
 
             <!-- 
                 input type='hidden'
