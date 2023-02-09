@@ -181,3 +181,4 @@ function pressNext(){// I have yet to trigger it with a countdown
         modal.style.left = (modal.offsetLeft + xOffset) + "px";
       }
     }
+    

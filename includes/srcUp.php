@@ -15,6 +15,8 @@
 <style>
 :root{
   --width-modal: 400px;
+
+  --backgruod-dark: black;
 }
 
 .modal {
