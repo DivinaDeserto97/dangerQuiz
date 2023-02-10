@@ -87,8 +87,8 @@
                 <input id='correct' name='correct' type='hidden' value="<?php echo $tot; ?>">
                 <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden' value='<?php echo $currentQuestionIndex; ?> '>
                 <input id='indexStep' name='indexStep' type='hidden' value='1'>
+
                 <?php $maxCount = formMaxCount();?>
-                
                 <input id='timerQuestion' name='timerQuestion' type='hidden' value='<?php echo $maxCount; ?>'>
 
                 <!-- Validierungswarnung -->

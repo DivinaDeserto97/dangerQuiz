@@ -51,20 +51,23 @@
 
 <script>
   // TIMER QUIZ --------------------------------------------------------------------------------------------------------------------------
-var count;            // Die Variable count ist deklariert. Ihr Wert ist noch undefined.
-var max = document.getElementById('timerQuestion').value;
-console.log(max);
-var maxCount = parseInt(max);
-console.log(maxCount);
+var count; 
+var maxCount;
 var intervalId;       // Wird zum Stoppen von setInterval() verwendet.
   
 function startCountdown() {
+
+  var max = document.getElementById('timerQuestion').value;
+  console.log(max);
+  maxCount = parseInt(max);
+  console.log(maxCount);
+
     //setDisplay(maxCount);
     count = maxCount; // Counter in Anfangszustand setzen.
 
     // Verwende die Referenz 'updateCounter', um die Funktion für später zu registrieren.
     intervalId = setInterval(updateCounter, 1000); // Jede Sekunde: aktualisiere den Zähler und die Anzeige.
-} 
+}
               
 function stopCountdown() {
     // JavaScript Funktion clearInterval() aufrufen.
