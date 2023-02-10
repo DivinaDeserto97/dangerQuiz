@@ -45,7 +45,7 @@
             <label for='timerQuestion' style='margin-top:20px;' class='form-label'>Time per question:</label>
             <input id='timerQuestion' name='timerQuestion' type='number' 
                    min='10' max='90' value='30'
-                   style='width:100px'  class='form-control'>      
+                   style='width:100px'  class='form-control'>
 
             <!-- 
                 input type='hidden'
