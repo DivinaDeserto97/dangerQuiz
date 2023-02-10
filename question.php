@@ -35,11 +35,11 @@
 
             <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next');">
                 <?php 
-                    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
-                    $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
-                    
                     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
                     $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
+                    
+                    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
+                    $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
 
                     if(isset($rowQ) && isset($rowA)){
                         

@@ -1,4 +1,4 @@
-alert('test JS');
+//alert('test JS');
 
 function workInProrgress(){
     alert('this funktion is in progress');
