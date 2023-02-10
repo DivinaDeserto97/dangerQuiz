@@ -55,7 +55,7 @@
                                         </label>
                                       </div>";
                             }
-                        } elseif ($rowQ['type'] === 'MULTIBlE'){
+                        } elseif ($rowQ['type'] === 'MULTIPLE'){
                             $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
