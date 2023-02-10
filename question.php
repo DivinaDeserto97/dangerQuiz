@@ -44,27 +44,33 @@
                     if(isset($rowQ) && isset($rowA)){
                         
                         if($rowQ['type'] === 'SINGLE'){
+                            $tot = 0;
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
+                                $tot = $tot + intval($correct);
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='$awserID' type='radio' value='$correct' class='form-check-input'>
+                                        <input id='$awserID' name='single-choice' type='radio' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
                                       </div>";
                             }
                         } elseif ($rowQ['type'] === 'MULTIPLE'){
+                            $tot= 0;
+                            foreach($rowA as $value){
                             $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
+                                $tot = $tot + intval($correct);
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='$awserID' type='checkbox' value='$correct' class='form-check-input'>
+                                        <input id='$awserID' name='multiple-choice-$awserID' type='checkbox' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
                                       </div>";
+                            }
                         } else {
                             print "Error 1 by Tipe";
                         }
@@ -76,7 +82,9 @@
                         questionNum, lastQuestionIndex: mit PHP gesetzt
                         indexStep: mit JavaScript setIntValue(fieldId, value) verändert
                 -->
+
                 <input id='questionNum' type='hidden' value="<?php echo $quiz['questionNum']; ?>">
+                <input id='correct' name='correct' type='hidden' value="<?php echo $tot; ?>">
                 <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden' value='<?php echo $currentQuestionIndex; ?> '>
                 <input id='indexStep' name='indexStep' type='hidden' value='1'>
                 <?php $maxCount = formMaxCount();?>
