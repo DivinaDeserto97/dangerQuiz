@@ -1,3 +1,5 @@
+<!-- huhu! -->
+
 <?php require ('./includes/data-collector.php'); // Muss zuerst sein wegen start_session()
 ?>
 <!DOCTYPE html>
