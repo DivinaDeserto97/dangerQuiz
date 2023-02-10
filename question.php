@@ -15,7 +15,7 @@
     <?php require('includes/header.php');?>
 
     <?php
-        // Bestimme die Anzahl der verfügbaren Fragen
+        // Bestimme die Anzahl der verfügbaren Fragen dwwwwsfghjuloöttrewq
         if (isset($quiz['questionIdSequence'])) {
             $id = $quiz['questionIdSequence'][$currentQuestionIndex];
         } 
