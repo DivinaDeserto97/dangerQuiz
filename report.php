@@ -24,6 +24,7 @@
                      bevor die Punktzahlen gesammelt werden dürfen.
         */
         $totalPoints = 0;
+        $total_multiple = 0;
 
         foreach ($_SESSION as $name => $value) {
             if (str_contains($name, 'question-')) {
@@ -32,10 +33,14 @@
                     $points = intval($value['single-choice']);
                     $totalPoints = $totalPoints + $points; // Kurzform: $totalPoints += $points;
                 }
+                if (isset($value['result'])) { 
+                    $points = intval($value['result']);
+                    $total_multiple = $total_multiple + $points; // Kurzform: $totalPoints += $points;
+                }
             }
         }
-
         // Maximal mögliche Punkte
+        $resFinal = $totalPoints + $total_multiple;
         $maxPoints = $_SESSION['quiz']['questionNum'];
     ?>
 
@@ -44,7 +49,7 @@
             <!-- Bilanz -->
             <h7>Congratulations!</h7>
             <p>&nbsp;</p>
-            <h3>You achieved <?php echo $totalPoints; ?> out of 
+            <h3>You achieved <?php echo $resFinal; ?> out of 
                     possible <?php echo $maxPoints; ?> points.</h3>
 
         </div>

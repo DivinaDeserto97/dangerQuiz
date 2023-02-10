@@ -59,17 +59,20 @@
                             }
                         } elseif ($rowQ['type'] === 'MULTIPLE'){
                             $tot= 0;
+                            $multiple = 0;
+                            $c = 0;
                             foreach($rowA as $value){
                             $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
                                 $tot = $tot + intval($correct);
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='multiple-choice-$awserID' type='checkbox' value='$correct' class='form-check-input'>
-                                        <label class='form-check-label' for='$awserID'>
+                                        <input id='answer-$c' name='multiple-choice-$c' type='checkbox' value='$correct' class='form-check-input' onchange='checkbox();'>
+                                        <label class='form-check-label' for='answer-$c'>
                                             $text
                                         </label>
                                       </div>";
+                                      $c++;
                             }
                         } else {
                             print "Error 1 by Tipe";
@@ -85,6 +88,8 @@
 
                 <input id='questionNum' type='hidden' value="<?php echo $quiz['questionNum']; ?>">
                 <input id='correct' name='correct' type='hidden' value="<?php echo $tot; ?>">
+                <input id='total_correct' name='total_correct' type='hidden'>
+                <input id='result' name='result' type='hidden'>
                 <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden' value='<?php echo $currentQuestionIndex; ?> '>
                 <input id='indexStep' name='indexStep' type='hidden' value='1'>
                 <?php $maxCount = formMaxCount();?>
@@ -96,10 +101,10 @@
                 <p class='spacer'></p>
 
                 <?php require('includes/footer.php'); ?>
-                <script>startCountdown();</script>
+                <!-- <script>checkbox();</script> -->
             </form>
         </div>
     </div>
-
+<script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -210,3 +210,26 @@ function updateCounter() {
 function pressNext() {
   document.getElementById("nextQuestion").click(); // drückt button mit der id 'nextQuestion'.
 }
+
+function checkbox() {
+  var total = 0;
+  var value;
+  for (i = 0; i <= 4; i++) {
+    value = document.getElementById(`answer-${i}`).value;
+    checked = document.getElementById(`answer-${i}`).checked;
+    if (checked) {
+      if (value == 1) {
+        total++;
+      } else {
+        total--;
+      }
+      if (total < 1) {
+        total = 0;
+      }
+    }
+  }
+  total_question = document.getElementById("correct").value;
+  document.getElementById("total_correct").value = total;
+  result = total / total_question;
+  document.getElementById("result").value = result;
+}

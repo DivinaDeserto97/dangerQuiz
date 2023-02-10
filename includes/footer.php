@@ -44,15 +44,15 @@
                 <?php
 
                     if (isset($quiz['questionIdSequence'])) {
-                        $id = $quiz['questionIdSequence'][$currentQuestionIndex];
+                        //$id = $quiz['questionIdSequence'][$currentQuestionIndex];
                     }
-                    
-                    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
+
+                    /* $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
-                    
+
                     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
-                    $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
-                    
+                    $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC); */
+
                     if(isset($_POST)){
                         prettyPrint($_POST, '$_POST =');
                     } else {
@@ -66,13 +66,13 @@
                     }
 
                     if (isset($_SESSION)) {
-                        prettyPrint($rowQ, '$rowQ =');
+                        //prettyPrint($rowQ, '$rowQ =');
                     } else {
                         echo '$rowQ = not divined.<br>';
                     }
 
                     if (isset($_SESSION)) {
-                        prettyPrint($rowA, '$rowA =');
+                        //prettyPrint($rowA, '$rowA =');
                     } else {
                         echo '$rowA = not divined.<br>';
                     }
