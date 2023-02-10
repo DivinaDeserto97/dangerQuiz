@@ -57,9 +57,9 @@ var intervalId;       // Wird zum Stoppen von setInterval() verwendet.
   
 function startCountdown() {
 
-  var max = document.getElementById('timerQuestion').value;
+  var max = document.getElementById('timerQuestion').value; // value aus hidden Feld;
   console.log(max);
-  maxCount = parseInt(max);
+  maxCount = parseInt(max); // umwandeln in integer
   console.log(maxCount);
 
     //setDisplay(maxCount);
