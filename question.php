@@ -25,10 +25,16 @@
     ?>
 
     <!-- FORMULAR 'Fragestellung' -->
-    <div class='rowQ' style='padding: 20px;'>
+    <div class='row' style='padding: 20px;'>
         <div class='col-sm-8'>
             <!-- Fragestellung -->
-            <h7>Frage <?php echo ($currentQuestionIndex + 1); ?> von <?php echo $quiz['questionNum']; ?></h7>
+            <?php
+                $Question = $rowC['14']['englisch'];
+                $index = $currentQuestionIndex + 1;
+                $von = $rowC['15']['englisch'];
+                $all = $quiz['questionNum'];
+                echo "<h7>$Question $index $von $all</h7>";
+            ?>
             <p>&nbsp;</p>
             <h3><?php echo $question['question']; ?></h3>
             <p>&nbsp;</p>
