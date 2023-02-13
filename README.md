@@ -1,4 +1,4 @@
-# Trivia Quiz
+# Trivia Quiz+
 
 ## Content
 
