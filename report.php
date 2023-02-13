@@ -44,9 +44,9 @@
             <!-- Bilanz -->
             <h7>Congratulations!</h7>
             <p>&nbsp;</p>
-            <h3>You achieved <?php echo $totalPoints; ?> out of 
-                    possible <?php echo $maxPoints; ?> points.</h3>
-
+            <h3>
+                You achieved <?php echo $totalPoints; ?> out of possible <?php echo $maxPoints; ?> points.
+            </h3>
         </div>
         <p>&nbsp;</p>
         
