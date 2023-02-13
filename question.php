@@ -55,7 +55,9 @@
                                 $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
-                                $tot = $tot + intval($correct);
+
+                                $tot = $tot + min(0, intval($correct));
+
                                 echo "<div class='form-check'>
                                         <input id='$awserID' name='single-choice' type='radio' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
@@ -66,7 +68,7 @@
                         } elseif ($rowQ['type'] === 'MULTIPLE'){
                             $tot= 0;
                             foreach($rowA as $value){
-                            $awserID = 'awnser' . $value['id'];
+                                $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
                                 $tot = $tot + intval($correct);
@@ -77,6 +79,12 @@
                                         </label>
                                       </div>";
                             }
+                            echo "<div class='form-check' style='diplay: none;'>
+                                        <input id='$awserID' name='multiple-choice-$awserID' type='checkbox' value='$correct' class='form-check-input'>
+                                        <label class='form-check-label' for='$awserID'>
+                                            $text
+                                        </label>
+                                      </div>";
                         } else {
                             print "Error 1 by Tipe";
                         }
