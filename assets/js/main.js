@@ -228,8 +228,26 @@ function checkbox() {
       }
     }
   }
+
   total_question = document.getElementById("correct").value;
   document.getElementById("total_correct").value = total;
   result = total / total_question;
   document.getElementById("result").value = result;
+}
+
+function radioValidate() {
+  var c = 0;
+  for (i = 0; i <= 4; i++) {
+    checked = document.getElementById(`answer-${i}`).checked;
+    if (checked) {
+      c++;
+      console.log(c);
+    }
+  }
+  if (c < 1) {
+    alert("Error");
+    return false;
+  } else {
+    return true;
+  }
 }

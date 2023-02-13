@@ -33,7 +33,7 @@
             <h3><?php echo $question['question']; ?></h3>
             <p>&nbsp;</p>
 
-            <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next');">
+            <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next'), radioValidate();">
                 <?php 
                     $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
@@ -45,17 +45,19 @@
                         
                         if($rowQ['type'] === 'SINGLE'){
                             $tot = 0;
+                            $c = 0;
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
                                 $tot = $tot + intval($correct);
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='single-choice' type='radio' value='$correct' class='form-check-input'>
-                                        <label class='form-check-label' for='$awserID'>
+                                        <input id='answer-$c' name='single-choice' type='radio' value='$correct' class='form-check-input'>
+                                        <label class='form-check-label' for='answer-$c'>
                                             $text
                                         </label>
                                       </div>";
+                                      $c++;
                             }
                         } elseif ($rowQ['type'] === 'MULTIPLE'){
                             $tot= 0;
@@ -104,6 +106,13 @@
                 <!-- <script>checkbox();</script> -->
             </form>
         </div>
+        <h2 class="text-center">
+            <?php
+                $start = date("Y-m-d H:i:s", now());
+                $end = date("Y-m-d H:i:s", now() + $_POST['timerQuestion']);
+                echo $start;
+            ?>
+        </h2>
     </div>
 <script src="assets/js/main.js"></script>
 </body>

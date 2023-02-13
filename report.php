@@ -34,14 +34,15 @@
                     $totalPoints = $totalPoints + $points; // Kurzform: $totalPoints += $points;
                 }
                 if (isset($value['result'])) { 
-                    $points = intval($value['result']);
-                    $total_multiple = $total_multiple + $points; // Kurzform: $totalPoints += $points;
+                    $points_multiple = floatval($value['result']);
+                    $total_multiple = $total_multiple + $points_multiple; // Kurzform: $totalPoints += $points;
                 }
             }
         }
         // Maximal mögliche Punkte
         $resFinal = $totalPoints + $total_multiple;
         $maxPoints = $_SESSION['quiz']['questionNum'];
+        //echo $_SESSION['question-7']['result'];
     ?>
 
     <div class='rowQ' style='padding: 20px;'>
