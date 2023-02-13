@@ -1,7 +1,6 @@
+//alert('test JS');
 
-$alert('test JS');
-
-function workInProrgress(){
+function workInProrgress() {
     alert('this funktion is in progress');
 }
 
@@ -51,7 +50,7 @@ function navigate(direction) {
         // index.php -----------------------------------------------------------
         setActionTarget(actionTarget);
         setElementValue('indexStep', indexStep);
-        
+
         // Keine weitere Validierung der Eingabefelder: Formular abschicken
         return true;
     }
@@ -65,7 +64,7 @@ function navigate(direction) {
     }
     else if (pathname.indexOf('/report.php') >= 0) {
         // report.php ----------------------------------------------------------
-        
+
         /*
             report.php hat keine Formulardaten, also gibt es auch keine
             Validierung.
@@ -77,7 +76,7 @@ function navigate(direction) {
     }
     else {
         // Die aktuelle Seite ist nicht bekannt: Blockiere die weitere Submit-Aktion.
-        return false; 
+        return false;
     }
 }
 
@@ -125,7 +124,7 @@ function validateStartParameter() {
 
 function validateAnswerSelection() {
     // TODO
-    return true;   
+    return true;
 }
 
 // GET THE MODAL------------------------------------------------------------------------------------------------------------------------
@@ -133,10 +132,10 @@ var modal = document.getElementById("session");
 
 // Get the button that opens the modal
 var btn = document.getElementById("showSession");
-    
+
 // Get the modal header
 var header = document.getElementsByClassName("modal-header")[0];
-    
+
 // Variables for dragging the modal
 var isDragging = false;
 var currentX;
@@ -145,26 +144,26 @@ var initialX;
 var initialY;
 var xOffset = 0;
 var yOffset = 0;
-    
+
 // When the user clicks on the button, open the modal 
-btn.onclick = function() {
+btn.onclick = function () {
     modal.style.display = "block";
 }
-    
+
 // When the user starts dragging the header
-header.onmousedown = function() {
+header.onmousedown = function () {
     isDragging = true;
     initialX = event.clientX;
     initialY = event.clientY;
 }
-    
+
 // When the user stops dragging the header
-header.onmouseup = function() {
+header.onmouseup = function () {
     isDragging = false;
 }
-    
+
 // When the user moves the mouse while dragging the header
-header.onmousemove = function() {
+header.onmousemove = function () {
     if (isDragging) {
         currentX = event.clientX;
         currentY = event.clientY;
@@ -177,44 +176,3 @@ header.onmousemove = function() {
     }
 }
 
-// TIMER QUIZ --------------------------------------------------------------------------------------------------------------------------
-var count;            // Die Variable count ist deklariert. Ihr Wert ist noch undefined.
-var maxCount = document.getElementById('timerQuestion').value;
-var intervalId;       // Wird zum Stoppen von setInterval() verwendet.
-  
-function startCountdown() {
-    //setDisplay(maxCount);
-    count = maxCount; // Counter in Anfangszustand setzen.
-  
-    // Verwende die Referenz 'updateCounter', um die Funktion für später zu registrieren.
-    intervalId = setInterval(updateCounter, 1000); // Jede Sekunde: aktualisiere den Zähler und die Anzeige.
-} 
-              
-function stopCountdown() {
-    // JavaScript Funktion clearInterval() aufrufen.
-    clearInterval(intervalId);
-  
-}
-  
-function updateCounter() {
-    count = count - 1; // Kurzform: count--;
-                  
-    // If done then stop updating.
-    if (count === 0) {
-        // Count down ist fertig.
-        stopCountdown();
-    } else {
-        // Zeige aktuellen 'count' an.
-        // setDisplay(count);
-    }
-}
-  
-/* 
-    function setDisplay(info) { // 'info' kann z. Bsp. ein String oder eine Zahl sein.
-        document.getElementById('display').innerText = info;
-    } 
-*/
-  
-function pressNext(){
-    document.getElementById('nextQuestion').click(); // drückt button mit der id 'nextQuestion'.
-}

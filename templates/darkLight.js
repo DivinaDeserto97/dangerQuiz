@@ -6,7 +6,8 @@ function buttonChangeBrightDark(){
     } else {
         localStorage.setItem('mustBrightDark' , 'Dark');
     }
-  }
+  } /* Wechsel dark-light-mode Bilder: */
+  
   function changeDark(){
     /* Pictures Bright off */
     document.getElementById('logo').style.display = 'none'; 
