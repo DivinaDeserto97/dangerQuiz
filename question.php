@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <?php require('includes/haeder.php');?>
+    <?php require('includes/header.php');?>
 
     <?php
         // Bestimme die Anzahl der verfügbaren Fragen
@@ -35,36 +35,42 @@
 
             <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next');">
                 <?php 
-                    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
-                    $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
-                    
                     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
                     $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
+                    
+                    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
+                    $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
 
                     if(isset($rowQ) && isset($rowA)){
                         
                         if($rowQ['type'] === 'SINGLE'){
+                            $tot = 0;
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
+                                $tot = $tot + intval($correct);
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='$awserID' type='radio' value='$correct' class='form-check-input'>
+                                        <input id='$awserID' name='single-choice' type='radio' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
                                       </div>";
                             }
-                        } elseif ($rowQ['type'] === 'MULTIBlE'){
+                        } elseif ($rowQ['type'] === 'MULTIPLE'){
+                            $tot= 0;
+                            foreach($rowA as $value){
                             $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
+                                $tot = $tot + intval($correct);
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='$awserID' type='checkbox' value='$correct' class='form-check-input'>
+                                        <input id='$awserID' name='multiple-choice-$awserID' type='checkbox' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
                                       </div>";
+                            }
                         } else {
                             print "Error 1 by Tipe";
                         }
@@ -76,9 +82,14 @@
                         questionNum, lastQuestionIndex: mit PHP gesetzt
                         indexStep: mit JavaScript setIntValue(fieldId, value) verändert
                 -->
-                <input type='hidden' id='questionNum' value="<?php echo $quiz['questionNum']; ?>">
-                <input type='hidden' id='lastQuestionIndex' name='lastQuestionIndex' value='<?php echo $currentQuestionIndex; ?> '>
-                <input type='hidden' id='indexStep' name='indexStep' value='1'>
+
+                <input id='questionNum' type='hidden' value="<?php echo $quiz['questionNum']; ?>">
+                <input id='correct' name='correct' type='hidden' value="<?php echo $tot; ?>">
+                <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden' value='<?php echo $currentQuestionIndex; ?> '>
+                <input id='indexStep' name='indexStep' type='hidden' value='1'>
+
+                <?php $maxCount = formMaxCount();?>
+                <input id='timerQuestion' name='timerQuestion' type='hidden' value='<?php echo $maxCount; ?>'>
 
                 <!-- Validierungswarnung -->
                 <p id='validation-warning' class='warning'></p>
@@ -86,6 +97,7 @@
                 <p class='spacer'></p>
 
                 <?php require('includes/footer.php'); ?>
+                <script>startCountdown();</script>
             </form>
         </div>
     </div>

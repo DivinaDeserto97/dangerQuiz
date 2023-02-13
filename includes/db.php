@@ -19,6 +19,9 @@ function fetchQuestionById($id, $dbConnection) {
     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
     $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
 
+    $sqlStatementContent = $dbConnection->query("SELECT * FROM `content` WHERE  1");
+    $content = $sqlStatementContent->fetch(PDO::FETCH_ASSOC);
+
     // print_r($rowQ);
 
     /*
@@ -37,6 +40,11 @@ function fetchQuestionIdSequence($topic, $questionNum, $dbConnection) {
     // print_r($rowQs);
 
     return $rowQs;
+}
+
+function formMaxCount(){
+    $countMax = intval($_POST['timerQuestion']);
+    return $countMax;
 }
 
 ?>
