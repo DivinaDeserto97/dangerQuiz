@@ -18,7 +18,7 @@
     <?php
         /*
             Bestimme die Anzahl der erreichten Punkte. Dazu wird das
-            'value'-Attribut des Feldes 'single-choice' ausgewertet.
+            'value'-Attribut des Feldes 'anwser' ausgewertet.
 
             Wichtig: Sämtliche $_SESSION-Werte müssen fertig gesetzt sein,
                      bevor die Punktzahlen gesammelt werden dürfen.
@@ -27,9 +27,9 @@
 
         foreach ($_SESSION as $name => $value) {
             if (str_contains($name, 'question-')) {
-                // Falls keine Antwort gewählt wurde fehlt 'single-choice' im $_POST.
-                if (isset($value['single-choice'])) { 
-                    $points = intval($value['single-choice']);
+                // Falls keine Antwort gewählt wurde fehlt 'anwser' im $_POST.
+                if (isset($value['anwser'])) { 
+                    $points = intval($value['anwser']);
                     $totalPoints = $totalPoints + $points; // Kurzform: $totalPoints += $points;
                 }
             }
