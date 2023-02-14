@@ -58,6 +58,29 @@
 
         $resultPercent = (100 / $maxPoints) * $achievedPoints;
         echo $resultPercent;
+
+
+        if ($resultPercent <= 30) {
+
+        } elseif ($resultPercent > 30 && $resultPercent <= 60) {
+            
+
+        } elseif ($resultPercent > 60 && $resultPercent <= 80) {
+
+
+        } elseif ($resultPercent > 80 && $resultPercent <= 95) {
+
+
+        } elseif ($resultPercent > 95 && $resultPercent <= 100) {
+
+
+        } else {
+            // mehr als 100 %.
+        }
+
+        // test
+        
+        
     ?>
 
     <div class='row' style='padding: 20px;'>
