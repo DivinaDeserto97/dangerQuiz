@@ -47,8 +47,7 @@
                     $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
 
-                    if(isset($rowQ) && isset($rowA)){
-                        
+                    if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
                             $tot = 1;
                             foreach($rowA as $value){
@@ -75,7 +74,7 @@
                                 $intCorrect = intval($correct);
                                 if ($intCorrect < 0) {
                                     $minCorrect = 0;
-                                } else 
+                                } else {
                                     $minCorrect = 1;
                                 }
                                 $tot = $tot + $minCorrect;
@@ -86,8 +85,9 @@
                                         </label>
                                       </div>";
                             }
-                    } else {
-                        print "Error 1 by Tipe";
+                        } else {
+                            print "Error 1 by Tipe";
+                        }
                     }
                     
                 ?>
