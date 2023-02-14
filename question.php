@@ -63,7 +63,9 @@
                             $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
-                                $tot = $tot + intval($correct);
+                                $intCorrect = intval($correct);
+                                $minCorrect = min(0, $intCorrect);
+                                $tot = $tot + $minCorrect;
                                 echo "<div class='form-check'>
                                         <input id='$awserID' name='multiple-choice-$awserID' type='checkbox' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
