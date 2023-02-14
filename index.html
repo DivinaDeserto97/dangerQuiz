@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"/>
+
+    <link 
+        rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css"/>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+
+    <title>Danger Quiz</title>
+
+    <style>
+        .bg-dark {
+          background-color: #BA181B !important;
+        }
+      </style>
+</head>
+
+<body>
+
+<!-- CSS für Ghost Element -->
+body::before {
+    display:block;
+    content: '';
+    height: 60px;
+}
+
+<!--HEADER START -->
+
+    <header class="navbar navbar-expand-sm bg-dark navbar-dark py-4 fixed-top text-dark">
+
+        <div class="container">
+            <a href="#" class="text-dark col-1 d-flex justify-content-start">Home</a>
+            <a href="#" class="text-dark col-1 d-flex justify-content-end">Logo</a>
+            <a href="#" class="text-dark ncol-1 d-flex justify-content-end">Toggle</a>
+        </div>
+    </header>
+
+<!--HEADER END -->
+
+<!--EINGABEFELDER START -->
+<br><br><br>
+
+
+<section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div> 
+                <h1>Danger <span class="text-dark">Quiz</span></h1>
+
+
+<?php require('includes/header.php');?>
+<!-- FORMULAR 'Themenwahl' -->
+<div style='padding: 20px;'>
+    <form id='quiz-form' action='question.php' method='post' onsubmit="return navigate('next');">
+        <!-- Themenwahl -->
+        <label for='topic' class='form-label'>Quiz Thema - bitte auswählen!</label>
+        <select id='topic' name='topic' class='form-select' aria-label='Default select example'>
+        <option value='music'>Music</option>
+            <option value='ch-norris'>Chuck Norris</option>
+            <option value='animals'>Animals</option>
+            <option value='movies'>Movies</option>
+            <option value='d-n-d'>Dungeons & Dragons</option>
+            <option value='astronautics'>Astronautics</option>
+            <!-- option value='technology'>Technology</option -->
+            <!-- option value='ai'>Artificial Intelligence</option -->
+            <option value='geography'>Geography</option>
+            <!-- option value='sports'>Sports</option-->
+            <option value='science'>Science</option>
+            <option value='informatics'>Informatics</option>
+            <option value='gen-knowledge'>General Knowledge</option>
+            <option value='basketball'>Basketball</option>
+        </select>
+
+        <!-- Anzahl Fragen -->
+        <label for='questionNum' style='margin-top:20px;' class='form-label'>Number of questions:</label>
+        <input id='questionNum' name='questionNum' type='number' 
+               min='2' max='40' value='10'
+               style='width:100px'  class='form-control'>
+
+        <!-- Zeit Pro Frage -->
+        <label for='timerQuestion' style='margin-top:20px;' class='form-label'>Time per question:</label>
+        <input id='timerQuestion' name='timerQuestion' type='number' 
+               min='10' max='90' value='30'
+               style='width:100px'  class='form-control'>
+
+        <!-- 
+            input type='hidden'
+                lastQuestionIndex: mit PHP gesetzt
+                indexStep: mit JavaScript setIntValue(fieldId, value) verändert
+        -->
+        <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden'  value='-1'>
+        <input id='indexStep' name='indexStep' type='hidden' value='1'>
+
+        <!-- Validierungswarnung -->
+        <p id='validation-warning' class='warning'></p>
+
+
+        <?php require('includes/footer.php'); ?>
+    </form>
+
+
+
+<!--EINGABEFELDER ENDE -->
+
+<!--BILD START -->
+    </div>
+        </div>
+                <img class="img-fluid w-50 d-none d-sm-block fixed-right"src="/assets/images/indexPageImages/owl-gif-animated.gif" alt="owl gif">
+        </div>
+        <br><br><br><br>
+    </div>
+<!--BILD END -->
+
+
+</section>
+
+
+<!-- ELEMENT FOOTER START -->
+
+<footer class="p-5 bg-dark bottom-0 position-relative">
+<div class="container">
+    <button class="btn btn-primary">
+        <i class="fas fa-edit"></i>
+      </button>
+
+
+<a href="#" class="position-absolute bottom-0 end-0">
+    <i class="fa-sharp fa-solid fa-circle-right"></i>
+</a>
+"<button type='submit' class='btn btn-light' value='Start'>
+    <i class="fa-sharp fa-solid fa-circle-right"></i>  </button>"
+
+
+
+</div>
+</footer>
+
+
+</body>
+</html>

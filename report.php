@@ -39,13 +39,18 @@
         $maxPoints = $_SESSION['quiz']['questionNum'];
     ?>
 
-    <div class='rowQ' style='padding: 20px;'>
+    <div class='row' style='padding: 20px;'>
         <div class='col-sm-8'>
             <!-- Bilanz -->
-            <h7>Congratulations!</h7>
             <p>&nbsp;</p>
             <h3>
-                You achieved <?php echo $totalPoints; ?> out of possible <?php echo $maxPoints; ?> points.
+                <?php
+                    $text1 = $rowC['16']['englisch'];
+                    $text2 = $rowC['17']['englisch'];
+                    $text3 = $rowC['18']['englisch'];
+
+                    echo "$text1 $totalPoints $text2 $maxPoints $text3";
+                ?>
             </h3>
         </div>
         <p>&nbsp;</p>
