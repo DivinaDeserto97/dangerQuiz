@@ -13,7 +13,7 @@
 </head>
 <body>
     <?php require('includes/header.php');?>
-
+    
     <?php
         // Bestimme die Anzahl der verfügbaren Fragen
         if (isset($quiz['questionIdSequence'])) {
@@ -25,35 +25,47 @@
     ?>
 
     <!-- FORMULAR 'Fragestellung' -->
-    <div class='rowQ' style='padding: 20px;'>
-        <div class='col-sm-8'>
+    <div class="pre-cont">
+    <div class='cont-question'>
+        <div class='cont-formular'>
             <!-- Fragestellung -->
-            <h7>Frage <?php echo ($currentQuestionIndex + 1); ?> von <?php echo $quiz['questionNum']; ?></h7>
+            <?php
+                $Question = $rowC['14']['englisch'];
+                $index = $currentQuestionIndex + 1;
+                $von = $rowC['15']['englisch'];
+                $all = $quiz['questionNum'];
+                echo "<h7>$Question $index $von $all</h7>";
+            ?>
             <p>&nbsp;</p>
             <h3><?php echo $question['question']; ?></h3>
             <p>&nbsp;</p>
 
             <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next'), radioValidate();">
                 <?php 
-                    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
-                    $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
-                    
                     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
                     $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
+                    
+                    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
+                    $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
 
-                    if(isset($rowQ) && isset($rowA)){
-                        
+                    if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
-                            $tot = 0;
-                            $c = 0;
+
+                            $tot = 1;
+
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
+                                $img = $value[''];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
-                                $tot = $tot + intval($correct);
+
+
+                                $tot = $tot + min(0, intval($correct));
+
                                 echo "<div class='form-check'>
-                                        <input id='answer-$c' name='single-choice' type='radio' value='$correct' class='form-check-input'>
-                                        <label class='form-check-label' for='answer-$c'>
+                                        <input id='$awserID' name='answer' type='radio' value='$correct' class='form-check-input'>
+                                        <label class='form-check-label' for='$awserID'>
+
                                             $text
                                         </label>
                                       </div>";
@@ -61,25 +73,32 @@
                             }
                         } elseif ($rowQ['type'] === 'MULTIPLE'){
                             $tot= 0;
-                            $multiple = 0;
-                            $c = 0;
+
                             foreach($rowA as $value){
-                            $awserID = 'awnser' . $value['id'];
+                                $awserID = $value['id'];
+
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
-                                $tot = $tot + intval($correct);
+                                $intCorrect = intval($correct);
+                                if ($intCorrect < 0) {
+                                    $minCorrect = 0;
+                                } else {
+                                    $minCorrect = 1;
+                                }
+                                $tot = $tot + $minCorrect;
                                 echo "<div class='form-check'>
-                                        <input id='answer-$c' name='multiple-choice-$c' type='checkbox' value='$correct' class='form-check-input' onchange='checkbox();'>
-                                        <label class='form-check-label' for='answer-$c'>
+                                        <input id='$awserID' name='answer-$awserID' type='checkbox' value='$correct' class='form-check-input'>
+                                        <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
                                       </div>";
-                                      $c++;
+
                             }
                         } else {
                             print "Error 1 by Tipe";
                         }
                     }
+                    
                 ?>
 
                 <!-- 
@@ -89,11 +108,12 @@
                 -->
 
                 <input id='questionNum' type='hidden' value="<?php echo $quiz['questionNum']; ?>">
-                <input id='correct' name='correct' type='hidden' value="<?php echo $tot; ?>">
-                <input id='total_correct' name='total_correct' type='hidden'>
-                <input id='result' name='result' type='hidden'>
+
+                <input id='correct' name='correct' type='hidden' value='<?php echo $tot; ?>'>
+
                 <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden' value='<?php echo $currentQuestionIndex; ?> '>
                 <input id='indexStep' name='indexStep' type='hidden' value='1'>
+
                 <?php $maxCount = formMaxCount();?>
                 <input id='timerQuestion' name='timerQuestion' type='hidden' value='<?php echo $maxCount; ?>'>
 
@@ -106,13 +126,12 @@
                 <!-- <script>checkbox();</script> -->
             </form>
         </div>
-        <h2 class="text-center">
-            <!-- <?php
-                $start = date("Y-m-d H:i:s", now());
-                $end = date("Y-m-d H:i:s", now() + $_POST['timerQuestion']);
-                echo $start;
-            ?> -->
-        </h2>
+
+        <div class="cont-img">
+                <img src="assets/images/questionPageTopicImages/ZappaSolo.gif" class="d-none d-lg-block" alt="owl gif">
+            </div>
+    </div>
+
     </div>
 <script src="assets/js/main.js"></script>
 </body>

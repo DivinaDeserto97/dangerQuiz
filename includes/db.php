@@ -12,12 +12,18 @@ $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // QUERY FUNCTIONS ---------------------------------------------------------------------
 
+    $sqlStatementContent = $dbConnection->query("SELECT * FROM `content` WHERE  1");
+    $rowC = $sqlStatementContent->fetchAll(PDO::FETCH_ASSOC);
+
+
+    $sqlStatementThemen = $dbConnection->query("SELECT * FROM `content` WHERE `tag` BETWEEN 'ch-norris' AND 'basketball'");
+    $rowT = $sqlStatementThemen->fetchAll(PDO::FETCH_ASSOC);
+
 function fetchQuestionById($id, $dbConnection) {
-    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
-    $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
 
     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
     $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
+
 
     // print_r($rowQ);
 
@@ -32,11 +38,11 @@ function fetchQuestionIdSequence($topic, $questionNum, $dbConnection) {
     // SELECT * FROM TableName ORDER BY RAND() LIMIT N;
     $query = "SELECT `id` FROM `questions` WHERE `topic`= '$topic' ORDER BY RAND() LIMIT $questionNum";
     $sqlStatementQuestion = $dbConnection->query($query);
-    $rowQs = $sqlStatementQuestion->fetchAll(PDO::FETCH_COLUMN, 0); // `id` ist Spalte (column) 0.
+    $rows = $sqlStatementQuestion->fetchAll(PDO::FETCH_COLUMN, 0); // `id` ist Spalte (column) 0.
 
-    // print_r($rowQs);
+    // print_r($rows);
 
-    return $rowQs;
+    return $rows;
 }
 
 function formMaxCount(){

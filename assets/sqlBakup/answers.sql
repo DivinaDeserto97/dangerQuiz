@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Erstellungszeit: 08. Feb 2023 um 09:28
--- Server-Version: 8.0.31
--- PHP-Version: 8.0.19
+-- Generation Time: Feb 14, 2023 at 09:55 AM
+-- Server version: 8.0.32
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,24 +18,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `quiz`
+-- Database: `quiz`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `answers`
+-- Table structure for table `answers`
 --
 
 CREATE TABLE `answers` (
   `id` int NOT NULL,
-  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_correct` int NOT NULL,
   `question_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Daten für Tabelle `answers`
+-- Dumping data for table `answers`
 --
 
 INSERT INTO `answers` (`id`, `text`, `is_correct`, `question_id`) VALUES
@@ -142,42 +142,36 @@ INSERT INTO `answers` (`id`, `text`, `is_correct`, `question_id`) VALUES
 (256, 'Animal rights abuses', 0, 22),
 (257, 'Links to self-harm and suicide', 1, 22),
 (258, 'Implicit sexism', 0, 22),
-(259, 'Anarchistic rhetoric', 0, 22),
-(261, 'frequency modulation', 0, 23),
-(262, 'additive synthesis', 0, 23),
-(263, 'analogue modeling', 0, 23),
-(264, 'sampling technology', 0, 23),
-(265, 'subtractive synthesis', 1, 23),
-(266, 'Samba', 0, 24),
-(267, 'Tango', 0, 24),
-(268, 'Merengue', 0, 24),
-(269, 'Klezmer', 1, 24),
-(270, 'Bossa-Nova', 0, 24),
-(271, 'ABBA', 0, 25),
-(272, 'Supertramp', 0, 25),
-(273, 'Simon and Garfunkel', 0, 25),
-(274, 'The Eagles', 0, 25),
-(275, 'The Alan Parsons Project', 1, 25),
-(276, 'Holiday', 1, 26),
-(277, 'Papa Don’t Preach ', 0, 26),
-(278, 'Like a Prayer', 0, 26),
-(279, 'Like a virgin', 0, 26),
-(280, 'La Isla Fea', 0, 26),
-(281, 'wavetable synthesis', 0, 27),
-(282, 'electromagnetic induction', 1, 27),
-(283, 'frequency modulation (fm)', 0, 27),
-(284, 'subtractive synthesis', 0, 27),
-(285, 'stepdown transformation', 0, 27),
-(286, 'Post-Modernism', 0, 28),
-(287, 'Classical Period', 0, 28),
-(288, 'Renaissance', 0, 28),
-(289, 'Barock', 1, 28),
-(290, 'Romantic Period', 0, 28),
-(291, 'New York', 0, 29),
-(292, 'Chicago', 0, 29),
-(293, 'Detroit', 1, 29),
-(294, 'Manchester', 0, 29),
-(295, 'Houston', 0, 29),
+(259, ' Anarchistic rhetoric', 0, 22),
+(260, 'frequency modulation', 0, 23),
+(261, 'additive synthesis', 0, 23),
+(262, 'analogue modeling', 0, 23),
+(263, 'sampling technology', 0, 23),
+(267, 'subtractive synthesis', 1, 23),
+(268, 'Samba', 0, 24),
+(269, 'Tango', 0, 24),
+(270, 'Merengue', 0, 24),
+(271, 'Klezmer', 1, 24),
+(272, 'Bossa-Nova', 0, 24),
+(273, 'ABBA', 0, 25),
+(278, 'Supertramp', 0, 25),
+(279, 'Simon and Garfunkel', 0, 25),
+(280, 'The Eagles', 0, 25),
+(281, 'The Alan Parsons Project', 1, 25),
+(282, 'Holiday', 1, 26),
+(283, 'Papa Don’t Preach ', 0, 26),
+(284, 'Like a Prayer', 0, 26),
+(285, 'Like a virgin', 0, 26),
+(286, 'La Isla Fea', 0, 26),
+(287, 'wavetable synthesis', 0, 27),
+(288, 'electromagnetics', 1, 27),
+(289, 'frequency modulation (fm)', 0, 27),
+(290, 'subtractive synthesis', 0, 27),
+(291, 'electromechanics', 0, 27),
+(292, 'Post-Modernism', 0, 28),
+(293, 'Classical Period', 0, 28),
+(294, 'Renaissance', 0, 28),
+(295, 'Barock', 1, 28),
 (296, 'Director', 1, 101),
 (297, 'Actor\r\n', 0, 101),
 (298, 'Writer\r\n', 0, 101),
@@ -528,36 +522,6 @@ INSERT INTO `answers` (`id`, `text`, `is_correct`, `question_id`) VALUES
 (643, 'Frog\r\n', 0, 241),
 (644, 'Horse\r\n', 1, 241),
 (645, 'Line', 0, 241),
-(646, 'Martin Scorsese', 0, 301),
-(647, 'Quentin Tarantino', 1, 301),
-(648, 'Steven Spielberg', 0, 301),
-(651, 'Salma Hayek', 1, 302),
-(652, 'Penelope Cruz', 0, 302),
-(653, 'Sofia Vergara', 0, 302),
-(656, 'Marlon Brando', 1, 303),
-(657, 'Al Pacino', 0, 303),
-(658, 'Robert De Niro', 0, 303),
-(661, 'Martin Scorsese', 0, 304),
-(662, 'Frank Darabont', 1, 304),
-(663, 'Steven Spielberg', 0, 304),
-(666, 'A New Hope', 1, 305),
-(667, 'The Empire Strikes Back', 0, 305),
-(668, 'Return of the Jedi', 0, 305),
-(671, 'Marlon Brando', 0, 306),
-(672, 'Roberto de Niro ', 0, 306),
-(673, 'Jack Nicholson', 1, 306),
-(676, 'Frank Darabont', 0, 307),
-(677, 'James Cameron', 1, 307),
-(678, 'Steven Spielberg', 0, 307),
-(681, 'Avengers: Infinity War', 0, 308),
-(682, 'Avengers: Endgame', 0, 308),
-(683, 'The Avengers', 1, 308),
-(686, 'The One Ring', 1, 309),
-(687, 'The Ring of Power', 0, 309),
-(688, 'The Golden Ring', 0, 309),
-(691, 'Christopher Nolan', 1, 310),
-(692, 'Stanley Kubrick', 0, 310),
-(693, 'George Lucas', 0, 310),
 (696, 'Yes, every friday night!', 0, 401),
 (697, 'Yes, only once in a while.', 0, 401),
 (698, 'Yes, On the weekends!', 1, 401),
@@ -873,9 +837,9 @@ INSERT INTO `answers` (`id`, `text`, `is_correct`, `question_id`) VALUES
 (1068, 'Hervibores', 0, 1006),
 (1069, 'Omnivores', 1, 1006),
 (1070, 'Carnivores', 0, 1006),
-(1073, 'The moon', 1, 1007),
-(1074, 'The sun', 0, 1007),
-(1075, 'The stars', 0, 1007),
+(1073, 'Solid', 1, 1007),
+(1074, 'Soft', -1, 1007),
+(1075, 'Liquid', 1, 1007),
 (1078, 'Born yesterday', 0, 1008),
 (1079, 'Approximately thirteen billion years', 1, 1008),
 (1080, 'Five million years', 0, 1008),
@@ -883,10 +847,13 @@ INSERT INTO `answers` (`id`, `text`, `is_correct`, `question_id`) VALUES
 (1084, 'False', 1, 1009),
 (1088, 'True', 0, 1010),
 (1089, 'False', 1, 1010),
-(1093, 'Disappearance', 0, 1011),
-(1094, 'Extinction', 1, 1011),
-(1098, 'Mercury', 1, 1012),
-(1099, 'Saturn', 0, 1012),
+(1093, 'Snake', 1, 1011),
+(1094, 'Crocodile', 1, 1011),
+(1095, 'Eagle', -1, 1011),
+(1096, 'Commodus Dragon', 1, 1011),
+(1098, 'Light', -1, 1012),
+(1099, 'Water', 1, 1012),
+(1100, 'Oxygen', 1, 1012),
 (1103, 'True', 0, 1013),
 (1104, 'False', 1, 1013),
 (1108, '242', 0, 1014),
@@ -899,33 +866,35 @@ INSERT INTO `answers` (`id`, `text`, `is_correct`, `question_id`) VALUES
 (1119, 'head', 0, 1101),
 (1120, 'heading', 0, 1101),
 (1121, 'h6', 0, 1101),
-(1123, 'vrai', 1, 1102),
-(1124, 'faux', 0, 1102),
-(1128, 'On utilise une balise HTML special.', 0, 1103),
-(1129, 'on utilise une propriété css.', 1, 1103),
-(1133, 'vrai', 1, 1104),
-(1134, 'faux', 0, 1104),
-(1138, 'vrai', 0, 1105),
-(1139, 'faux', 1, 1105),
-(1143, 'l\'attribut class=\"\"', 1, 1106),
-(1144, 'l\'attribut id=\"\"', 0, 1106),
-(1145, 'la balise < strong>', 0, 1106),
-(1146, 'la balise < p>', 0, 1106),
-(1148, '< !doctype html5>', 0, 1107),
-(1149, '< !doctype html>', 1, 1107),
-(1152, '< a target=\"http://wikipedia.org\">Wikipédia</a>', 0, 1108),
+(1123, 'True', 1, 1102),
+(1124, 'False', 0, 1102),
+(1128, 'A special HTML tag is used.', 0, 1103),
+(1129, 'we use a css property.', 1, 1103),
+(1133, 'True', 1, 1104),
+(1134, 'False', 0, 1104),
+(1138, 'c++;', 1, 1105),
+(1139, 'alert.print(\"Hello World\");', -1, 1105),
+(1140, 'console.log(\"Hello World\");', 1, 1105),
+(1143, 'Attribute class=\"\"', 1, 1106),
+(1144, 'Attribute id=\"\"', 0, 1106),
+(1145, 'Tag < strong>', 0, 1106),
+(1146, 'Tag < p>', 0, 1106),
+(1148, 'Javascript', 1, 1107),
+(1149, 'C#', 1, 1107),
+(1150, 'Linux', -1, 1107),
+(1152, '< a target=\"http://wikipedia.org\">Wikipédia< /a>', 0, 1108),
 (1153, '< a href=\"http://wikipedia.org\">', 0, 1108),
-(1154, '< a href=\"http://wikipedia.org\">Wikipédia</a>', 1, 1108),
-(1157, 'ul et li', 1, 1109),
-(1158, 'ol et li', 0, 1109),
-(1159, 'ul et ol', 0, 1109),
+(1154, '< a href=\"http://wikipedia.org\">Wikipédia< /a>\r\n\r\n', 1, 1108),
+(1157, 'PHP', 1, 1109),
+(1158, 'Javascript', 1, 1109),
+(1159, 'Sass', -1, 1109),
 (1162, '< img>src=\"mon-image.jpg\" alt=\"Une image\"< /img>', 0, 1110),
 (1163, '< img src=\"mon-image.jpg\" alt=\"Une image\">', 1, 1110),
 (1164, '< img href=\"mon-image.jpg\" alt=\"Une image\">', 0, 1110),
-(1167, 'Mettre en forme les éléments html d\'une page.', 1, 1111),
-(1168, 'Définir des formulaires.', 0, 1111),
-(1169, 'Créer des sites e-commerce.', 0, 1111),
-(1172, 'placer le css dans un fichier \".css\" séparé', 0, 1112),
+(1167, 'attribute to format the html elements of a page.', 1, 1111),
+(1168, 'Define forms.', 0, 1111),
+(1169, 'Create e-commerce sites.', 0, 1111),
+(1172, 'place the css in a separate \".css\" file', 0, 1112),
 (1175, 'Carnaroli', 0, 1201),
 (1176, 'Vialone Nano', 0, 1201),
 (1177, 'Maratelli', 0, 1201),
@@ -1075,35 +1044,123 @@ INSERT INTO `answers` (`id`, `text`, `is_correct`, `question_id`) VALUES
 (1321, 'Philadelphia 76\'s ', 0, 1310),
 (1322, 'Boston Celtics ', 1, 1310),
 (1323, 'Golden State Warriors ', 0, 1310),
-(1324, 'Memphis Grizzlies ', 0, 1310);
+(1324, 'Memphis Grizzlies ', 0, 1310),
+(1325, 'To create and experience a story.', 1, 431),
+(1326, 'To win battles against monsters.', 1, 431),
+(1327, 'To gain wealth and fame', 1, 431),
+(1328, 'All players', 1, 432),
+(1329, 'The game master (Dungeon Master)', -1, 432),
+(1330, 'The player with the highest dice roll', 1, 432),
+(1332, 'To win battles against monsters ', 1, 433),
+(1333, 'To create and experience a story', 1, 433),
+(1334, 'To gain wealth and fame', 1, 433),
+(1335, 'To get bored ', -1, 433),
+(1965, 'Romantic Period', 0, 28),
+(1966, 'New York', 0, 29),
+(1967, 'Chicago', 0, 29),
+(1968, 'Detroit', 1, 29),
+(1969, 'Manchester', 0, 29),
+(1970, 'Houston', 0, 29),
+(1971, 'trumpet', 0, 30),
+(1972, 'saxophone', 1, 30),
+(1973, 'trombone', -1, 30),
+(1974, 'oboe', 1, 30),
+(1975, 'tuba', -1, 30),
+(1976, 'Swing', 1, 31),
+(1977, 'Hard Bop', -1, 31),
+(1978, 'Ragtime', 1, 31),
+(1979, 'Hip Hop', -1, 31),
+(1980, 'Post Bop', -1, 31),
+(1981, 'Timpani', -1, 32),
+(1982, 'Viola', 1, 32),
+(1983, 'Clarinet', -1, 32),
+(1984, 'Vocoder', -1, 32),
+(1985, 'Double Bass', 1, 32),
+(1986, 'Wofgang Amadeus Mozart', -1, 33),
+(1987, 'Gustav Mahler', -1, 33),
+(1988, 'Antonio Vivaldi', 1, 33),
+(1989, 'Johann Sebastian Bach', 1, 33),
+(1990, 'Frederic Chopin', -1, 33),
+(1992, 'John Travolta and Samuel L. Jackson', 1, 301),
+(1993, 'Brad Pitt and Uma Thurman', 0, 301),
+(1994, 'Jim Carrey and Jeff Daniels', 0, 301),
+(1995, 'Tim Robbins and Morgan Freeman', 0, 301),
+(1996, 'Johnny Depp and Penelope Cruz', 0, 301),
+(1997, 'Tom Hanks', 1, 302),
+(1998, 'Robin Wright', -1, 302),
+(1999, 'Forrest Gump', 1, 302),
+(2000, 'Gary Sinise', -1, 302),
+(2001, 'Sally Field', -1, 302),
+(2002, 'Clarice Starling', 1, 303),
+(2003, 'Hannibal Lecter', 1, 303),
+(2004, 'Buffalo Bill', -1, 303),
+(2005, 'Jodie Foster', -1, 303),
+(2006, 'Scott Glenn', -1, 303),
+(2007, 'Jack Dawson', 1, 304),
+(2008, 'Rose DeWitt Bukater', 1, 304),
+(2009, 'Cal Hockley', -1, 304),
+(2010, 'Billy Zane', -1, 304),
+(2011, 'Kathy Bates', -1, 304),
+(2012, 'Michael Corleone, Vito Corleone', 1, 305),
+(2013, 'Michael Corleone, Fredo Corleone', 1, 305),
+(2014, 'Vito Corleone, Tom Hagen', -1, 305),
+(2015, 'Michael Corleone, Tom Hagen', -1, 305),
+(2016, 'Vito Corleone, Fredo Corleone', -1, 305),
+(2017, 'Vincent Vega, Jules Winnfield', 1, 306),
+(2018, 'Vincent Vega, Mia Wallace', 1, 306),
+(2019, 'Jules Winnfield, Mia Wallace', -1, 306),
+(2020, 'Vincent Vega, Marsellus Wallace', -1, 306),
+(2021, 'Jules Winnfield, Marsellus Wallace', -1, 306),
+(2022, 'Henry Hill, Jimmy Conway', 1, 307),
+(2023, 'Henry Hill, Tommy DeVito', 1, 307),
+(2024, 'Jimmy Conway, Tommy DeVito', -1, 307),
+(2025, 'Henry Hill, Paul Cicero', -1, 307),
+(2026, 'Jimmy Conway, Paul Cicero', -1, 307),
+(2027, 'Andy Dufresne, Ellis \"Red\" Redding', 1, 308),
+(2028, 'Andy Dufresne, Warden Norton', 1, 308),
+(2029, 'Ellis \"Red\" Redding, Warden Norton', -1, 308),
+(2030, 'Andy Dufresne, Brooks Hatlen', -1, 308),
+(2031, 'Ellis \"Red\" Redding, Brooks Hatlen', -1, 308),
+(2032, 'Bruce Wayne, Commissioner Gordon', 1, 309),
+(2033, 'Bruce Wayne, Harvey Dent', 1, 309),
+(2034, 'Commissioner Gordon, Harvey Dent', -1, 309),
+(2035, 'Bruce Wayne, The Joker', -1, 309),
+(2036, 'Commissioner Gordon, The Joker', -1, 309),
+(2037, 'Mark Zuckerberg, Eduardo Saverin', 1, 310),
+(2038, 'Mark Zuckerberg, Sean Parker', 1, 310),
+(2039, 'Eduardo Saverin, Sean Parker', -1, 310),
+(2040, 'Mark Zuckerberg, Tyler and Cameron Winklevoss', -1, 310),
+(2041, 'Eduardo Saverin, Tyler and Cameron Winklevoss', -1, 310),
+(2042, 'place the css in a style attribute of each html element in the page.\r\n', 1, 1112),
+(2043, 'put the css in a separate \".css\" file', 0, 1112);
 
 --
--- Indizes der exportierten Tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indizes für die Tabelle `answers`
+-- Indexes for table `answers`
 --
 ALTER TABLE `answers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `answers_ibfk_1` (`question_id`);
 
 --
--- AUTO_INCREMENT für exportierte Tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT für Tabelle `answers`
+-- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1325;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2044;
 
 --
--- Constraints der exportierten Tabellen
+-- Constraints for dumped tables
 --
 
 --
--- Constraints der Tabelle `answers`
+-- Constraints for table `answers`
 --
 ALTER TABLE `answers`
   ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;

@@ -13,9 +13,18 @@
 
 </head>
 <body>
-
     <?php require('includes/header.php')?>
+
     <?php
+
+    /* rechne total mögliche punktezahl aus (maxPoints) */
+
+    // Maximal mögliche Punkte
+    $maxPoints = $_SESSION['quiz']['questionNum'];
+
+    $maxPoints = 0;
+    $achievedPoints = 0;
+
         /*
             Bestimme die Anzahl der erreichten Punkte. Dazu wird das
             'value'-Attribut des Feldes 'single-choice' ausgewertet.
@@ -23,15 +32,28 @@
             Wichtig: Sämtliche $_SESSION-Werte müssen fertig gesetzt sein,
                      bevor die Punktzahlen gesammelt werden dürfen.
         */
-        $totalPoints = 0;
-        $total_multiple = 0;
 
+
+        // extract question data
         foreach ($_SESSION as $name => $value) {
-            if (str_contains($name, 'question-')) {
-                // Falls keine Antwort gewählt wurde fehlt 'single-choice' im $_POST.
-                if (isset($value['single-choice'])) { 
-                    $points = intval($value['single-choice']);
-                    $totalPoints = $totalPoints + $points; // Kurzform: $totalPoints += $points;
+            if (str_contains($name, "question-")) {
+                // $value contains question-data
+                foreach ($value as $key => $val) {
+                    // depending upon $key decide and act.
+                    if ($key === 'correct') { 
+                        // number of possible correct answers.
+                        $maxPoints += intval($val); 
+                    } elseif ($key === 'answer') { 
+                        // radio button wert zu radio button bisher erreichten Punkten addieren
+                        $achievedPoints += intval($val);
+                    // multiple choice
+                    } elseif (str_contains($key, 'answer-')) {
+                        // add checkbox value to sum of checkbox values
+                        $achievedPoints += intval($val);
+                        if($achievedPoints < 0){
+                            $achievedPoints = 0;
+                        }
+                    }
                 }
                 if (isset($value['result'])) { 
                     $points_multiple = floatval($value['result']);
@@ -39,25 +61,90 @@
                 }
             }
         }
-        // Maximal mögliche Punkte
-        $resFinal = $totalPoints + $total_multiple;
-        $maxPoints = $_SESSION['quiz']['questionNum'];
-        //echo $_SESSION['question-7']['result'];
+
+
+        $resultPercent = (100 / $maxPoints) * $achievedPoints;
+        //echo $resultPercent;
+
+
+        $text_result;
+        if ($resultPercent <= 30) {
+            $text_result = $rowC['24']['englisch'];
+        } elseif ($resultPercent > 30 && $resultPercent <= 60) {
+
+            $text_result = $rowC['19']['englisch'];
+
+        } elseif ($resultPercent > 60 && $resultPercent <= 80) {
+            $text_result = $rowC['20']['englisch'];
+
+        } elseif ($resultPercent > 80 && $resultPercent <= 95) {
+            $text_result = $rowC['21']['englisch'];
+
+        } elseif ($resultPercent > 95 && $resultPercent <= 100) {
+            $text_result = $rowC['22']['englisch'];
+
+        }
+
+        // test
+        
+        
+
     ?>
 
-    <div class='rowQ' style='padding: 20px;'>
+
+<div class="pre-cont">
+    <div class="cont-result">
+            <div class='result-text' style='padding: 20px;'>
+                <div class='col-sm-8'>
+                    <!-- Bilanz -->
+                    <p>&nbsp;</p>
+
+                    <h3>
+                        <?php
+                            $text1 = $rowC['16']['englisch'];
+                            $text2 = $rowC['17']['englisch'];
+                            $text3 = $rowC['18']['englisch'];
+
+                            echo "$text1 $achievedPoints $text2 $maxPoints $text3";
+                        ?>
+                    </h3>
+                </div>
+
+                <p>
+                    <?php echo $text_result ?>
+                </p>
+
+            </div>
+            <div class="result-img">
+                <img src="/assets/images/indexPageImages/owl-gif-animated.gif"  alt="owl gif">
+            </div>
+
+    <div class='row' style='padding: 20px;'>
         <div class='col-sm-8'>
             <!-- Bilanz -->
-            <h7>Congratulations!</h7>
             <p>&nbsp;</p>
-            <h3>You achieved <?php echo $resFinal; ?> out of 
-                    possible <?php echo $maxPoints; ?> points.</h3>
 
+            <h3>
+                <?php
+                    $text1 = $rowC['16']['englisch'];
+                    $text2 = $rowC['17']['englisch'];
+                    $text3 = $rowC['18']['englisch'];
+
+
+                    echo "$text1 $achievedPoints $text2 $maxPoints $text3";
+                ?>
+            </h3>
         </div>
-        <p>&nbsp;</p>
         
+        <p>
+            
+        </p>
+        
+
     </div>
-    <?php require('includes/footer.php')?>
+</div>
+    
+            <?php require('includes/footer.php')?>
     
 </body>
 </html>
