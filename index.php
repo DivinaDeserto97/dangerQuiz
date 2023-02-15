@@ -15,11 +15,13 @@
 <body>
     <?php require('includes/header.php'); ?>
     <!-- FORMULAR 'Themenwahl' -->
-    
+    <h1 class='text-center'>Danger Quiz</h1>
+    <div class="pre-cont">
         <div class="cont-general">
             <div class="formular">
                 
                     <h1 class='text-center'><?php echo $rowC['23']['englisch']; ?></h1>
+
                     <!-- FORMULAR 'Themenwahl' -->
                     <form id='quiz-form' action='question.php' method='post' onsubmit="return navigate('next');">
                         <!-- Themenwahl -->
@@ -63,10 +65,11 @@
             <div class="cont-img">
                 <img src="/assets/images/indexPageImages/owl-gif-animated.gif" class="d-none d-sm-block" alt="owl gif">
             </div>
+            <div class="cont-img" style="display: none;" >
+                <img src="/assets/images/indexPageImages/owl-gif-animated.gif" alt="owl gif">
+            </div>
         </div>
-
-        
-
+</div>
  
 </body>
 
