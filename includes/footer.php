@@ -11,7 +11,7 @@
         }
         ?>
     </div>
-    <div class='col d-flex justify-content-end'>
+    <div class='col d-flex justify-content-end d-none d-sm-block'>
 
         <h5 id='showSession' class='btn btn-light'>Show Important Array</h5>
 
