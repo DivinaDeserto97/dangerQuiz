@@ -85,15 +85,13 @@ function updateCounter() {
         stopCountdown();
     } else {
         // Zeige aktuellen 'count' an.
-        // setDisplay(count);
+        setDisplay(count);
     }
 }
   
-/* 
-    function setDisplay(info) { // 'info' kann z. Bsp. ein String oder eine Zahl sein.
-        document.getElementById('display').innerText = info;
-    } 
-*/
+  function setDisplay(info) { // 'info' kann z. Bsp. ein String oder eine Zahl sein.
+      document.getElementById('display').innerHTML = info;
+  }
   
 function pressNext(){
     document.getElementById('nextQuestion').click(); // drückt button mit der id 'nextQuestion'.

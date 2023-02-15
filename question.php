@@ -25,10 +25,16 @@
     ?>
 
     <!-- FORMULAR 'Fragestellung' -->
-    <div class='rowQ' style='padding: 20px;'>
+    <div class='row' style='padding: 20px;'>
         <div class='col-sm-8'>
             <!-- Fragestellung -->
-            <h7>Frage <?php echo ($currentQuestionIndex + 1); ?> von <?php echo $quiz['questionNum']; ?></h7>
+            <?php
+                $Question = $rowC['14']['englisch'];
+                $index = $currentQuestionIndex + 1;
+                $von = $rowC['15']['englisch'];
+                $all = $quiz['questionNum'];
+                echo "<h7>$Question $index $von $all</h7>";
+            ?>
             <p>&nbsp;</p>
             <h3><?php echo $question['question']; ?></h3>
             <p>&nbsp;</p>
@@ -41,17 +47,18 @@
                     $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
 
-                    if(isset($rowQ) && isset($rowA)){
-                        
+                    if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
-                            $tot = 0;
+                            $tot = 1;
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
-                                $tot = $tot + intval($correct);
+
+                                $tot = $tot + min(0, intval($correct));
+
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='single-choice' type='radio' value='$correct' class='form-check-input'>
+                                        <input id='$awserID' name='answer' type='radio' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
@@ -60,12 +67,19 @@
                         } elseif ($rowQ['type'] === 'MULTIPLE'){
                             $tot= 0;
                             foreach($rowA as $value){
-                            $awserID = 'awnser' . $value['id'];
+                                $awserID = $value['id'];
+
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
-                                $tot = $tot + intval($correct);
+                                $intCorrect = intval($correct);
+                                if ($intCorrect < 0) {
+                                    $minCorrect = 0;
+                                } else {
+                                    $minCorrect = 1;
+                                }
+                                $tot = $tot + $minCorrect;
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='multiple-choice-$awserID' type='checkbox' value='$correct' class='form-check-input'>
+                                        <input id='$awserID' name='answer-$awserID' type='checkbox' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
@@ -75,6 +89,7 @@
                             print "Error 1 by Tipe";
                         }
                     }
+                    
                 ?>
 
                 <!-- 
@@ -84,7 +99,7 @@
                 -->
 
                 <input id='questionNum' type='hidden' value="<?php echo $quiz['questionNum']; ?>">
-                <input id='correct' name='correct' type='hidden' value="<?php echo $tot; ?>">
+                <input id='correct' name='correct' type='hidden' value='<?php echo $tot; ?>'>
                 <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden' value='<?php echo $currentQuestionIndex; ?> '>
                 <input id='indexStep' name='indexStep' type='hidden' value='1'>
 
