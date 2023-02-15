@@ -114,18 +114,6 @@ function setActionTarget(url) {
     formElement.action = url;
 }
 
-// FORM VALIDATION ---------------------------------------------------------------------------------------------------------------------
-
-function validateStartParameter() {
-    // TODO
-    return true;
-}
-
-function validateAnswerSelection() {
-    // TODO
-    return true;
-}
-
 // GET THE MODAL------------------------------------------------------------------------------------------------------------------------
 var modal = document.getElementById("session");
 

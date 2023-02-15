@@ -13,7 +13,7 @@
 </head>
 <body>
     <?php require('includes/header.php');?>
-
+    
     <?php
         // Bestimme die Anzahl der verfügbaren Fragen
         if (isset($quiz['questionIdSequence'])) {
@@ -25,8 +25,9 @@
     ?>
 
     <!-- FORMULAR 'Fragestellung' -->
-    <div class='row' style='padding: 20px;'>
-        <div class='col-sm-8'>
+    <div class="pre-cont">
+    <div class='cont-question'>
+        <div class='cont-formular'>
             <!-- Fragestellung -->
             <?php
                 $Question = $rowC['14']['englisch'];
@@ -52,6 +53,7 @@
                             $tot = 1;
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
+                                $img = $value[''];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
 
@@ -115,6 +117,10 @@
                 <script>startCountdown();</script>
             </form>
         </div>
+        <div class="cont-img">
+                <img src="assets/images/questionPageTopicImages/ZappaSolo.gif" class="d-none d-lg-block" alt="owl gif">
+            </div>
+    </div>
     </div>
 
 </body>
