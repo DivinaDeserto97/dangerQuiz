@@ -100,7 +100,7 @@
         </div>
         
         <p>
-            <?php echo $rowC['2']['englisch']; ?>
+            
         </p>
         
     </div>

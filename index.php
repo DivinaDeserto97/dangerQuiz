@@ -19,7 +19,7 @@
         <div class="cont-general">
             <div class="formular">
                 
-                    <h1 class='text-center'>Danger Quiz</h1>
+                    <h1 class='text-center'><?php echo $rowC['23']['englisch']; ?></h1>
                     <!-- FORMULAR 'Themenwahl' -->
                     <form id='quiz-form' action='question.php' method='post' onsubmit="return navigate('next');">
                         <!-- Themenwahl -->
@@ -55,7 +55,8 @@
                         <p id='validation-warning' class='warning'></p>
 
 
-                        
+                        <?php require('includes/footer.php'); ?>
+
                     </form>
             </div>
 
@@ -64,8 +65,7 @@
             </div>
         </div>
 
-        <?php require('includes/footer.php'); ?>
-
+        
 
  
 </body>
