@@ -20,6 +20,8 @@
         <div class="cont-general">
             <div class="formular">
                 
+                    <h1 class='text-center'><?php echo $rowC['23']['englisch']; ?></h1>
+
                     <!-- FORMULAR 'Themenwahl' -->
                     <form id='quiz-form' action='question.php' method='post' onsubmit="return navigate('next');">
                         <!-- Themenwahl -->
@@ -56,6 +58,7 @@
 
 
                         <?php require('includes/footer.php'); ?>
+
                     </form>
             </div>
 
@@ -66,10 +69,7 @@
                 <img src="/assets/images/indexPageImages/owl-gif-animated.gif" alt="owl gif">
             </div>
         </div>
-    </div>
-        
-
-
+</div>
  
 </body>
 

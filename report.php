@@ -13,8 +13,8 @@
 
 </head>
 <body>
-
     <?php require('includes/header.php')?>
+
     <?php
 
     /* rechne total mögliche punktezahl aus (maxPoints) */
@@ -84,6 +84,7 @@
         
     ?>
 
+
 <div class="pre-cont">
     <div class="cont-result">
             <div class='result-text' style='padding: 20px;'>
@@ -110,6 +111,27 @@
             <div class="result-img">
                 <img src="/assets/images/indexPageImages/owl-gif-animated.gif"  alt="owl gif">
             </div>
+
+    <div class='row' style='padding: 20px;'>
+        <div class='col-sm-8'>
+            <!-- Bilanz -->
+            <p>&nbsp;</p>
+            <h3>
+                <?php
+                    $text1 = $rowC['16']['englisch'];
+                    $text2 = $rowC['17']['englisch'];
+                    $text3 = $rowC['18']['englisch'];
+
+                    echo "$text1 $achievedPoints $text2 $maxPoints $text3";
+                ?>
+            </h3>
+        </div>
+        
+        <p>
+            
+        </p>
+        
+
     </div>
 </div>
     

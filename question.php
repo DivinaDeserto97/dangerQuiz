@@ -53,6 +53,7 @@
                             $tot = 1;
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
+                                $img = $value[''];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
 
