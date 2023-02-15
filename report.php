@@ -62,10 +62,12 @@
         $resultPercent = (100 / $maxPoints) * $achievedPoints;
         //echo $resultPercent;
 
+
         $text_result;
         if ($resultPercent <= 30) {
             $text_result = $rowC['24']['englisch'];
         } elseif ($resultPercent > 30 && $resultPercent <= 60) {
+
             $text_result = $rowC['19']['englisch'];
 
         } elseif ($resultPercent > 60 && $resultPercent <= 80) {
