@@ -15,7 +15,7 @@ function deleteAllCookies() {
         const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
         document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
     }
-    window.location.href = '../index.php';
+    window.location.href = 'index.php';
 }
 
 // NAVIGATION ------------------------------------------------------------------
@@ -127,50 +127,44 @@ function validateAnswerSelection() {
     return true;   
 }
 
-
-// TIMER QUIZ --------------------------------------------------------------------------------------------------------------------------
-
-function pressNext(){// I have yet to trigger it with a countdown
-    document.getElementById('nextQuestion').click();
-}
 // GET THE MODAL------------------------------------------------------------------------------------------------------------------------
-    var modal = document.getElementById("session");
+var modal = document.getElementById("session");
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("showSession");
+// Get the button that opens the modal
+var btn = document.getElementById("showSession");
     
-    // Get the modal header
-    var header = document.getElementsByClassName("modal-header")[0];
+// Get the modal header
+var header = document.getElementsByClassName("modal-header")[0];
     
-    // Variables for dragging the modal
-    var isDragging = false;
-    var currentX;
-    var currentY;
-    var initialX;
-    var initialY;
-    var xOffset = 0;
-    var yOffset = 0;
+// Variables for dragging the modal
+var isDragging = false;
+var currentX;
+var currentY;
+var initialX;
+var initialY;
+var xOffset = 0;
+var yOffset = 0;
     
-    // When the user clicks on the button, open the modal 
-    btn.onclick = function() {
-      modal.style.display = "block";
-    }
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
     
-    // When the user starts dragging the header
-    header.onmousedown = function() {
-      isDragging = true;
-      initialX = event.clientX;
-      initialY = event.clientY;
-    }
+// When the user starts dragging the header
+header.onmousedown = function() {
+    isDragging = true;
+    initialX = event.clientX;
+    initialY = event.clientY;
+}
     
-    // When the user stops dragging the header
-    header.onmouseup = function() {
-      isDragging = false;
-    }
+// When the user stops dragging the header
+header.onmouseup = function() {
+    isDragging = false;
+}
     
-    // When the user moves the mouse while dragging the header
-    header.onmousemove = function() {
-      if (isDragging) {
+// When the user moves the mouse while dragging the header
+header.onmousemove = function() {
+    if (isDragging) {
         currentX = event.clientX;
         currentY = event.clientY;
         xOffset = currentX - initialX;
@@ -179,6 +173,6 @@ function pressNext(){// I have yet to trigger it with a countdown
         initialY = currentY;
         modal.style.top = (modal.offsetTop + yOffset) + "px";
         modal.style.left = (modal.offsetLeft + xOffset) + "px";
-      }
     }
-    
+}
+

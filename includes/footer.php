@@ -6,14 +6,14 @@
                     <i class='fa-solid fa-ban'></i>
                   </button>";
         } elseif (str_contains($scriptName, 'report')) {
-            echo "<button class='btn btn-light' onclick='document.location='/index.php';'
+            echo "<button class='btn btn-light' onclick='document.location=`/index.php`;'
                   style='position:fixed;bottom:150px;'>Neues Quiz</button>";
         }
         ?>
     </div>
     <div class='col d-flex justify-content-end'>
 
-        <h5 id='showSession' class='btn btn-light'>Show Importan Array</h5>
+        <h5 id='showSession' class='btn btn-light'>Show Important Array</h5>
 
 
         
@@ -41,17 +41,18 @@
         <!-- modal Body -->
         <div class="modal-body">
             <p>
+                <div id='display'>00</div>
                 <?php
 
                     if (isset($quiz['questionIdSequence'])) {
-                        $id = $quiz['questionIdSequence'][$currentQuestionIndex];
+                        //$id = $quiz['questionIdSequence'][$currentQuestionIndex];
                     }
                     
-                    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
+                    /* $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
                     
                     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
-                    $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
+                    $row = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC); */
                     
                     if(isset($_POST)){
                         prettyPrint($_POST, '$_POST =');
@@ -65,16 +66,22 @@
                         echo '$_SESSION = not divined.<br>';
                     }
 
-                    if (isset($_SESSION)) {
-                        prettyPrint($rowQ, '$rowQ =');
+                    if (isset($row)) {
+                        prettyPrint($row, '$row =');
                     } else {
-                        echo '$rowQ = not divined.<br>';
+                        echo '$row = not divined.<br>';
                     }
 
-                    if (isset($_SESSION)) {
+                    if (isset($rowA)) {
                         prettyPrint($rowA, '$rowA =');
                     } else {
                         echo '$rowA = not divined.<br>';
+                    }
+
+                    if (isset($rowC)) {
+                        prettyPrint($rowC, '$rowC =');
+                    } else {
+                        echo '$rowC = not divined.<br>';
                     }
                         
                 ?>

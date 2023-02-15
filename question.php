@@ -25,42 +25,62 @@
     ?>
 
     <!-- FORMULAR 'Fragestellung' -->
-    <div class='rowQ' style='padding: 20px;'>
+    <div class='row' style='padding: 20px;'>
         <div class='col-sm-8'>
             <!-- Fragestellung -->
-            <h7>Frage <?php echo ($currentQuestionIndex + 1); ?> von <?php echo $quiz['questionNum']; ?></h7>
+            <?php
+                $Question = $rowC['14']['englisch'];
+                $index = $currentQuestionIndex + 1;
+                $von = $rowC['15']['englisch'];
+                $all = $quiz['questionNum'];
+                echo "<h7>$Question $index $von $all</h7>";
+            ?>
             <p>&nbsp;</p>
             <h3><?php echo $question['question']; ?></h3>
             <p>&nbsp;</p>
 
             <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next');">
                 <?php 
-                    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
-                    $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
-                    
                     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
                     $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
+                    
+                    $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
+                    $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
 
                     if(isset($rowQ) && isset($rowA)){
                         
                         if($rowQ['type'] === 'SINGLE'){
+                            $tot = 0;
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
+
+                                $tot = $tot + min(0, intval($correct));
+
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='$awserID' type='radio' value='$correct' class='form-check-input'>
+                                        <input id='$awserID' name='single-choice' type='radio' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
                                       </div>";
                             }
-                        } elseif ($rowQ['type'] === 'MULTIBlE'){
-                            $awserID = 'awnser' . $value['id'];
+                        } elseif ($rowQ['type'] === 'MULTIPLE'){
+                            $tot= 0;
+                            foreach($rowA as $value){
+                                $awserID = 'awnser' . $value['id'];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
+                                $tot = $tot + intval($correct);
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='$awserID' type='checkbox' value='$correct' class='form-check-input'>
+                                        <input id='$awserID' name='multiple-choice-$awserID' type='checkbox' value='$correct' class='form-check-input'>
+                                        <label class='form-check-label' for='$awserID'>
+                                            $text
+                                        </label>
+                                      </div>";
+                            }
+                            echo "<div class='form-check' style='diplay: none;'>
+                                        <input id='$awserID' name='multiple-choice-$awserID' type='checkbox' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
@@ -76,9 +96,14 @@
                         questionNum, lastQuestionIndex: mit PHP gesetzt
                         indexStep: mit JavaScript setIntValue(fieldId, value) verändert
                 -->
-                <input type='hidden' id='questionNum' value="<?php echo $quiz['questionNum']; ?>">
-                <input type='hidden' id='lastQuestionIndex' name='lastQuestionIndex' value='<?php echo $currentQuestionIndex; ?> '>
-                <input type='hidden' id='indexStep' name='indexStep' value='1'>
+
+                <input id='questionNum' type='hidden' value="<?php echo $quiz['questionNum']; ?>">
+                <input id='correct' name='correct' type='hidden' value="<?php echo $tot; ?>">
+                <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden' value='<?php echo $currentQuestionIndex; ?> '>
+                <input id='indexStep' name='indexStep' type='hidden' value='1'>
+
+                <?php $maxCount = formMaxCount();?>
+                <input id='timerQuestion' name='timerQuestion' type='hidden' value='<?php echo $maxCount; ?>'>
 
                 <!-- Validierungswarnung -->
                 <p id='validation-warning' class='warning'></p>
@@ -86,6 +111,7 @@
                 <p class='spacer'></p>
 
                 <?php require('includes/footer.php'); ?>
+                <script>startCountdown();</script>
             </form>
         </div>
     </div>

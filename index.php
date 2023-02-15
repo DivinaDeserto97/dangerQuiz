@@ -1,5 +1,4 @@
-<?php require ('./includes/data-collector.php'); // Muss zuerst sein wegen start_session()
-?>
+<?php require ('./includes/data-collector.php');?> <!-- Muss zuerst sein wegen start_session() -->
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -17,43 +16,37 @@
     <div style='padding: 20px;'>
         <form id='quiz-form' action='question.php' method='post' onsubmit="return navigate('next');">
             <!-- Themenwahl -->
-            <label for='quiz-topic' class='form-label'>Quiz Thema - bitte auswählen!</label>
-            <select class='form-select' aria-label='Default select example' id='topic' name='topic'>
-            <option value='music'>Music</option>
-                <option value='ch-norris'>Chuck Norris</option>
-                <option value='animals'>Animals</option>
-                <option value='movies'>Movies</option>
-                <option value='d-n-d'>Dungeons & Dragons</option>
-                <option value='astronautics'>Astronautics</option>
-                <!-- option value='technology'>Technology</option -->
-                <!-- option value='ai'>Artificial Intelligence</option -->
-                <option value='geography'>Geography</option>
-                <!-- option value='sports'>Sports</option-->
-                <option value='science'>Science</option>
-                <option value='informatics'>Informatics</option>
-                <option value='gen-knowledge'>General Knowledge</option>
-                <option value='basketball'>Basketball</option>
+            <label for='<?php echo $rowC['0']['tag']; ?>' class='form-label'><?php echo $rowC['0']['englisch']; ;?></label>
+            <select id='<?php echo $rowC['0']['tag']; ?>' name='<?php echo $rowC['0']['tag']; ?>' class='form-select' aria-label='Default select example'>
+                
+                <?php
+                    for ($i= 3; $i < 14; $i++) {
+                        $tag = $rowC[$i]['tag'];
+                        $content = $rowC[$i]['englisch'];
+                        echo "<option value='$tag'>$content</option>";
+                    }
+                ?>
             </select>
 
             <!-- Anzahl Fragen -->
-            <label for='questionNum' style='margin-top:20px;' class='form-label'>Number of questions:</label>
-            <input id='questionNum' name='questionNum' type='number' 
+            <label for='<?php echo $rowC['1']['tag']; ?>' style='margin-top:20px;' class='form-label'><?php echo $rowC['1']['englisch']; ;?></label>
+            <input id='<?php echo $rowC['1']['tag']; ?>' name='<?php echo $rowC['1']['tag']; ?>' type='number' 
                    min='2' max='40' value='10'
                    style='width:100px'  class='form-control'>
 
             <!-- Zeit Pro Frage -->
-            <label for='timeQuestion' style='margin-top:150px;' class='form-label'>Time per question:</label>
-            <input id='timeQuestion' name='timeQuestion' type='number' 
+            <label for='<?php echo $rowC['2']['tag']; ?>' style='margin-top:20px;' class='form-label'><?php echo $rowC['2']['englisch']; ;?></label>
+            <input id='<?php echo $rowC['2']['tag']; ?>' name='<?php echo $rowC['2']['tag']; ?>' type='number' 
                    min='10' max='90' value='30'
-                   style='width:100px'  class='form-control'>      
+                   style='width:100px'  class='form-control'>
 
             <!-- 
                 input type='hidden'
                     lastQuestionIndex: mit PHP gesetzt
                     indexStep: mit JavaScript setIntValue(fieldId, value) verändert
             -->
-            <input type='hidden' id='lastQuestionIndex' name='lastQuestionIndex' value='-1'>
-            <input type='hidden' id='indexStep' name='indexStep' value='1'>
+            <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden'  value='-1'>
+            <input id='indexStep' name='indexStep' type='hidden' value='1'>
 
             <!-- Validierungswarnung -->
             <p id='validation-warning' class='warning'></p>
