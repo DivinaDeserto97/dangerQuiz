@@ -5,7 +5,7 @@
             </a>
         </span>
 		<span class='middle-icon h-100'>
-                <img src='/assets/images/logos/dGLogo-bgTranspararent/danger-quiz-high-resolution-logo-black-on-transparent-background.webp'
+                <img src='/assets/images/logos/danger-quiz-high-resolution-logo-white-on-transparent-background.svg'
                 alt='Danger Quiz Logo'
                 height='70%'>
         </span>
