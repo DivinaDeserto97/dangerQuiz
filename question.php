@@ -58,7 +58,7 @@
                                 $tot = $tot + min(0, intval($correct));
 
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='anwser' type='radio' value='$correct' class='form-check-input'>
+                                        <input id='$awserID' name='answer' type='radio' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
@@ -79,7 +79,7 @@
                                 }
                                 $tot = $tot + $minCorrect;
                                 echo "<div class='form-check'>
-                                        <input id='$awserID' name='anwser-$awserID' type='checkbox' value='$correct' class='form-check-input'>
+                                        <input id='$awserID' name='answer-$awserID' type='checkbox' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
                                             $text
                                         </label>
