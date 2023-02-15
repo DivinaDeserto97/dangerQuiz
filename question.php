@@ -40,7 +40,7 @@
             <h3><?php echo $question['question']; ?></h3>
             <p>&nbsp;</p>
 
-            <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next');">
+            <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next'), radioValidate();">
                 <?php 
                     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
                     $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
@@ -50,24 +50,30 @@
 
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
+
                             $tot = 1;
+
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
                                 $img = $value[''];
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
 
+
                                 $tot = $tot + min(0, intval($correct));
 
                                 echo "<div class='form-check'>
                                         <input id='$awserID' name='answer' type='radio' value='$correct' class='form-check-input'>
                                         <label class='form-check-label' for='$awserID'>
+
                                             $text
                                         </label>
                                       </div>";
+                                      $c++;
                             }
                         } elseif ($rowQ['type'] === 'MULTIPLE'){
                             $tot= 0;
+
                             foreach($rowA as $value){
                                 $awserID = $value['id'];
 
@@ -86,6 +92,7 @@
                                             $text
                                         </label>
                                       </div>";
+
                             }
                         } else {
                             print "Error 1 by Tipe";
@@ -101,7 +108,9 @@
                 -->
 
                 <input id='questionNum' type='hidden' value="<?php echo $quiz['questionNum']; ?>">
+
                 <input id='correct' name='correct' type='hidden' value='<?php echo $tot; ?>'>
+
                 <input id='lastQuestionIndex' name='lastQuestionIndex' type='hidden' value='<?php echo $currentQuestionIndex; ?> '>
                 <input id='indexStep' name='indexStep' type='hidden' value='1'>
 
@@ -114,14 +123,16 @@
                 <p class='spacer'></p>
 
                 <?php require('includes/footer.php'); ?>
-                <script>startCountdown();</script>
+                <!-- <script>checkbox();</script> -->
             </form>
         </div>
+
         <div class="cont-img">
                 <img src="assets/images/questionPageTopicImages/ZappaSolo.gif" class="d-none d-lg-block" alt="owl gif">
             </div>
     </div>
-    </div>
 
+    </div>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
