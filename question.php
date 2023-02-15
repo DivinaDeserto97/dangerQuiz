@@ -49,6 +49,7 @@
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
 
                     $img = $rowQ['image'];
+                    $path = 'assets/images/topic/'. $img;
 
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
@@ -119,7 +120,8 @@
             </form>
         </div>
         <div class="cont-img">
-                <img src="assets/images/questionPageTopicImages/ZappaSolo.gif" class="d-none d-lg-block" alt="owl gif">
+
+                <img src='<?php echo $img; ?>' class="d-none d-lg-block" alt="owl gif">
             </div>
     </div>
     </div>
