@@ -13,8 +13,8 @@
 
 </head>
 <body>
-
     <?php require('includes/header.php')?>
+
     <?php
 
     /* rechne total mögliche punktezahl aus (maxPoints) */
