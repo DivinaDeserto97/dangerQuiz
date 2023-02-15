@@ -1,6 +1,5 @@
 <!---------------------------------------------------------- css -------------------------------------------------------------------->
-<!-- mycss -->
-<link rel='stylesheet' href='../assets/css/style.css'>
+
 <!-- Bootstrap -->
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'>
 <!-- font awsom -->
@@ -11,46 +10,12 @@
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'></script>
 <script src='../assets/js/main.js' defer></script>
 
-<!----------------------------------------------------------- js -------------------------------------------------------------------->
-<style>
-:root{
-  --width-modal: 400px;
+<!----------------------------------------------------------- php -------------------------------------------------------------------->
 
-  --backgruod-dark: black;
-}
+  <?php require ('assets/css/style.php');?>
 
-.modal {
-  width: var(--width-modal);
-  height: 400px;
-  
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.modal-header {
-  width:  var(--width-modal);
-  height: 50px;
-
-  padding: 16px;
-  color: white;
-  cursor: move;
-}
-
-.modal-body {
-  width:  var(--width-modal);
-  height: 350px;
-
-  padding: 16px;
-  background-color: white;
-  overflow: auto;
-}
-</style>
-
-<script>
-  // TIMER QUIZ --------------------------------------------------------------------------------------------------------------------------
+<script>// extern
+// TIMER QUIZ --------------------------------------------------------------------------------------------------------------------------
 var count; 
 var maxCount;
 var intervalId;       // Wird zum Stoppen von setInterval() verwendet.

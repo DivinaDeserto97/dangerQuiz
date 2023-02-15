@@ -61,21 +61,22 @@
 
 
         if ($resultPercent <= 30) {
-
+            echo "1";
         } elseif ($resultPercent > 30 && $resultPercent <= 60) {
-            
+            echo "2";
 
         } elseif ($resultPercent > 60 && $resultPercent <= 80) {
-
+            echo "3";
 
         } elseif ($resultPercent > 80 && $resultPercent <= 95) {
-
+            echo "4";
 
         } elseif ($resultPercent > 95 && $resultPercent <= 100) {
-
+            echo "5";
 
         } else {
             // mehr als 100 %.
+            echo "6";
         }
 
         // test
