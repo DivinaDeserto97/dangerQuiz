@@ -1,17 +1,18 @@
-<header class='row haeder-light'>
-    <div class='col-1 d-flex justify-content-start'> 
-        <button class='btn btn-light'>
-            <a href='./../../index.php' style='color: black;'>
-                <i class='fa-sharp fa-solid fa-house'></i>
+<header class='fixed-top pb-5'>
+        <span class='left-icon h-100'>
+            <a href='/index.php' class='link'>
+                <i class='fa-solid fa-house'></i>
             </a>
-        </button>
-    </div>
-    <div class='col d-flex justify-content-center'>
-        <h2>Danger Quiz</h2>
-    </div>
-    <div class='col-1 d-flex justify-content-end'>
-        <button onclick='workInProrgress();' class='btn btn-light'>
-            <i class='fa-solid fa-circle-half-stroke'></i>
-        </button>
-    </div>
+        </span>
+		<span class='middle-icon h-100'>
+                <img src='/assets/images/logos/dGLogo-bgTranspararent/danger-quiz-high-resolution-logo-black-on-transparent-background.webp'
+                alt='Danger Quiz Logo'
+                height='70%'>
+        </span>
+		<span class='right-icon bi bi-mask h-100'>
+            <button class='link p-0'>
+                <i class='fa-solid fa-circle-half-stroke'></i>
+            </button>
+        </span>
 </header>
+<br><br><br>
