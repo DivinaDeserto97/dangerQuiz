@@ -66,8 +66,8 @@
                         echo '$_SESSION = not divined.<br>';
                     }
 
-                    if (isset($row)) {
-                        prettyPrint($row, '$row =');
+                    if (isset($rowQ)) {
+                        prettyPrint($rowQ, '$rowQ =');
                     } else {
                         echo '$row = not divined.<br>';
                     }

@@ -1,6 +1,6 @@
 # Trivia Quiz
 
-## Content
+## Content.
 
 [Git](https://git-scm.com/)
 
