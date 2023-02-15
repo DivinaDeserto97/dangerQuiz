@@ -107,11 +107,11 @@
             </form>
         </div>
         <h2 class="text-center">
-            <?php
+            <!-- <?php
                 $start = date("Y-m-d H:i:s", now());
                 $end = date("Y-m-d H:i:s", now() + $_POST['timerQuestion']);
                 echo $start;
-            ?>
+            ?> -->
         </h2>
     </div>
 <script src="assets/js/main.js"></script>
