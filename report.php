@@ -13,8 +13,8 @@
 
 </head>
 <body>
-
     <?php require('includes/header.php')?>
+
     <?php
 
     /* rechne total mögliche punktezahl aus (maxPoints) */
@@ -32,8 +32,7 @@
             Wichtig: Sämtliche $_SESSION-Werte müssen fertig gesetzt sein,
                      bevor die Punktzahlen gesammelt werden dürfen.
         */
-        
-        
+
 
         // extract question data
         foreach ($_SESSION as $name => $value) {
@@ -51,47 +50,86 @@
                     } elseif (str_contains($key, 'answer-')) {
                         // add checkbox value to sum of checkbox values
                         $achievedPoints += intval($val);
+                        if($achievedPoints < 0){
+                            $achievedPoints = 0;
+                        }
                     }
+                }
+                if (isset($value['result'])) { 
+                    $points_multiple = floatval($value['result']);
+                    $total_multiple = $total_multiple + $points_multiple; // Kurzform: $totalPoints += $points;
                 }
             }
         }
 
+
         $resultPercent = (100 / $maxPoints) * $achievedPoints;
-        echo $resultPercent;
+        //echo $resultPercent;
 
 
+        $text_result;
         if ($resultPercent <= 30) {
-
+            $text_result = $rowC['24']['englisch'];
         } elseif ($resultPercent > 30 && $resultPercent <= 60) {
-            
+
+            $text_result = $rowC['19']['englisch'];
 
         } elseif ($resultPercent > 60 && $resultPercent <= 80) {
-
+            $text_result = $rowC['20']['englisch'];
 
         } elseif ($resultPercent > 80 && $resultPercent <= 95) {
-
+            $text_result = $rowC['21']['englisch'];
 
         } elseif ($resultPercent > 95 && $resultPercent <= 100) {
+            $text_result = $rowC['22']['englisch'];
 
-
-        } else {
-            // mehr als 100 %.
         }
 
         // test
         
         
+
     ?>
+
+
+<div class="pre-cont">
+    <div class="cont-result">
+            <div class='result-text' style='padding: 20px;'>
+                <div class='col-sm-8'>
+                    <!-- Bilanz -->
+                    <p>&nbsp;</p>
+
+                    <h3>
+                        <?php
+                            $text1 = $rowC['16']['englisch'];
+                            $text2 = $rowC['17']['englisch'];
+                            $text3 = $rowC['18']['englisch'];
+
+                            echo "$text1 $achievedPoints $text2 $maxPoints $text3";
+                        ?>
+                    </h3>
+                </div>
+
+                <p>
+                    <?php echo $text_result ?>
+                </p>
+
+            </div>
+            <div class="result-img">
+                <img src="/assets/images/indexPageImages/owl-gif-animated.gif"  alt="owl gif">
+            </div>
 
     <div class='row' style='padding: 20px;'>
         <div class='col-sm-8'>
             <!-- Bilanz -->
             <p>&nbsp;</p>
+
             <h3>
                 <?php
                     $text1 = $rowC['16']['englisch'];
                     $text2 = $rowC['17']['englisch'];
                     $text3 = $rowC['18']['englisch'];
+
 
                     echo "$text1 $achievedPoints $text2 $maxPoints $text3";
                 ?>
@@ -99,11 +137,14 @@
         </div>
         
         <p>
-            <?php echo $rowC['2']['englisch']; ?>
+            
         </p>
         
+
     </div>
-    <?php require('includes/footer.php')?>
+</div>
+    
+            <?php require('includes/footer.php')?>
     
 </body>
 </html>
