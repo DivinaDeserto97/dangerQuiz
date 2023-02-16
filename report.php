@@ -65,7 +65,6 @@
 
         $resultPercent = (100 / $maxPoints) * $achievedPoints;
         //echo $resultPercent;
-       
 
         $text_result;
         if ($resultPercent <= 30) {

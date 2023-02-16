@@ -48,7 +48,6 @@
                     $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
                     $img = $rowQ['image'];
-                    echo "$img<br>";
 
                     $img = $rowQ['image'];
                     $path = 'assets/images/topic/'. $img;
