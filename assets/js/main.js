@@ -1,35 +1,62 @@
 //alert('test JS');
+
 function workInProrgress() {
     alert('this funktion is in progress');
+}
+
+
+function deleteAllCookies() {
+    alert('you start from the beginning');
+    const cookies = document.cookie.split(';');
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf('=');
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    }
+    window.location.href = 'index.php';
 }
 
 // NAVIGATION ------------------------------------------------------------------
 
 function navigate(direction) {
-    // Parameter der aktuellen Seite
-    let pathname = window.location.pathname;
-    let questionNum = parseInt(getElementValue('questionNum', '0'));
-    let lastQuestionIndex = parseInt(getElementValue('lastQuestionIndex', '-1'));
+  // Parameter der aktuellen Seite
+  let pathname = window.location.pathname;
+  let questionNum = parseInt(getElementValue("questionNum", "0"));
+  let lastQuestionIndex = parseInt(getElementValue("lastQuestionIndex", "-1"));
 
-    // Berechne die Parameter für die Ziel-Seite
-    let indexStep = getIndexStep(direction);
-    let nextQuestionIndex = lastQuestionIndex + indexStep;
-    let actionTarget;
+  // Berechne die Parameter für die Ziel-Seite
+  let indexStep = getIndexStep(direction);
+  let nextQuestionIndex = lastQuestionIndex + indexStep;
+  let actionTarget;
 
-    if (0 <= nextQuestionIndex && nextQuestionIndex < questionNum) {
-        // Eine Frage ist die Zielseite.
-        actionTarget = 'question.php';
-    }
-    else if (nextQuestionIndex >= questionNum) {
-        // Die Auswertung ist die Zielseite.
-        actionTarget = 'report.php';
-    }
-    else { // nextQuestionIndex < 0
-        // Die Startseite ist die Zielseite.
-        actionTarget = 'index.php';
-    }
+  if (0 <= nextQuestionIndex && nextQuestionIndex < questionNum) {
+    // Eine Frage ist die Zielseite.
+    actionTarget = "question.php";
+  } else if (nextQuestionIndex >= questionNum) {
+    // Die Auswertung ist die Zielseite.
+    actionTarget = "report.php";
+  } else {
+    // nextQuestionIndex < 0
+    // Die Startseite ist die Zielseite.
+    actionTarget = "index.php";
+  }
 
-    // alert(`pathname = ${pathname};\nquestionNum = ${questionNum};\nlastQuestionIndex = ${lastQuestionIndex};\nindexStep = ${indexStep};\nnextQuestionIndex = ${nextQuestionIndex};\nactionTarget = ${actionTarget}`);
+  // alert(`pathname = ${pathname};\nquestionNum = ${questionNum};\nlastQuestionIndex = ${lastQuestionIndex};\nindexStep = ${indexStep};\nnextQuestionIndex = ${nextQuestionIndex};\nactionTarget = ${actionTarget}`);
+
+  if (pathname === "/" || pathname.indexOf("/index.php") >= 0) {
+    // index.php -----------------------------------------------------------
+    setActionTarget(actionTarget);
+    setElementValue("indexStep", indexStep);
+
+    // Keine weitere Validierung der Eingabefelder: Formular abschicken
+    return true;
+  } else if (pathname.indexOf("/question.php") >= 0) {
+    // question.php --------------------------------------------------------
+    setActionTarget(actionTarget);
+    setElementValue("indexStep", indexStep);
+
 
     if (pathname === '/' || pathname.indexOf('/index.php') >= 0) {
         // index.php -----------------------------------------------------------
@@ -51,11 +78,13 @@ function navigate(direction) {
         // report.php ----------------------------------------------------------
 
         /*
+
             report.php hat keine Formulardaten, also gibt es auch keine
             Validierung.
 
             Die einzige erlaubte Navigation: Neues Quiz starten ab index.php.
         */
+
         document.location = '/index.php';
         return true;
     }
@@ -63,42 +92,43 @@ function navigate(direction) {
         // Die aktuelle Seite ist nicht bekannt: Blockiere die weitere Submit-Aktion.
         return false;
     }
+
 }
 
 function navigatePrevious() {
-    let formElement = document.getElementById('quiz-form');
-    formElement.setAttribute('onsubmit', "return navigate('previous');");
-    // formElement.submit();
+  let formElement = document.getElementById("quiz-form");
+  formElement.setAttribute("onsubmit", "return navigate('previous');");
+  // formElement.submit();
 }
 
 function getIndexStep(direction) {
-    if (direction === 'next') return 1;
-    else if (direction === 'previous') return -1;
-    else return 0;
+  if (direction === "next") return 1;
+  else if (direction === "previous") return -1;
+  else return 0;
 }
 
 function getElementValue(fieldId, defaultValue) {
-    let inputElement = document.getElementById(fieldId);
+  let inputElement = document.getElementById(fieldId);
 
-    if (inputElement) {
-        // Verwende parseInt(), um den String-Wert in einen Integer zu verwandeln.
-        return inputElement.value;
-    }
-    else {
-        // In der aktuelle Seite fehlt das Feld: Default-Wert zurückgeben.
-        return defaultValue;
-    }
+  if (inputElement) {
+    // Verwende parseInt(), um den String-Wert in einen Integer zu verwandeln.
+    return inputElement.value;
+  } else {
+    // In der aktuelle Seite fehlt das Feld: Default-Wert zurückgeben.
+    return defaultValue;
+  }
 }
 
 function setElementValue(fieldId, value) {
-    let inputElement = document.getElementById(fieldId);
-    if (inputElement) inputElement.value = value;
+  let inputElement = document.getElementById(fieldId);
+  if (inputElement) inputElement.value = value;
 }
 
 function setActionTarget(url) {
-    let formElement = document.getElementById('quiz-form');
-    formElement.action = url;
+  let formElement = document.getElementById("quiz-form");
+  formElement.action = url;
 }
+
 
 // GET THE MODAL------------------------------------------------------------------------------------------------------------------------
 var modal = document.getElementById("session");
@@ -117,6 +147,7 @@ var initialX;
 var initialY;
 var xOffset = 0;
 var yOffset = 0;
+
 
 // When the user clicks on the button, open the modal 
 btn.onclick = function () {
@@ -148,4 +179,3 @@ header.onmousemove = function () {
         modal.style.left = (modal.offsetLeft + xOffset) + "px";
     }
 }
-
