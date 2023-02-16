@@ -50,6 +50,9 @@
                     $img = $rowQ['image'];
                     echo "$img<br>";
 
+                    $img = $rowQ['image'];
+                    $path = 'assets/images/topic/'. $img;
+
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
                             
@@ -57,7 +60,7 @@
 
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
-                                
+
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
 
@@ -129,7 +132,8 @@
         </div>
 
         <div class="cont-img">
-                <img src="assets/images/questionPageTopicImages/ZappaSolo.gif" class="d-none d-lg-block" alt="owl gif">
+
+                <img src='<?php echo $img; ?>' class='d-none d-lg-block' alt='owl gif'>
             </div>
     </div>
 
