@@ -91,6 +91,14 @@
 
     ?>
 
+<audio id="sound0" src="assets/audio/sound0.mp3" autoplay="autoplay"></audio>
+<script>
+
+window.onload = function() {
+    document.getElementById("sound0").play();
+}
+
+</script>
 
 <div class="pre-cont">
     <div class="cont-result">
