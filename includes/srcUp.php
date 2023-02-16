@@ -18,7 +18,42 @@
 
   --backgruod-dark: black;
 }
+body {
+			background-color: #BA181B;
+		}
+		.fixed-top {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			padding: 10px;
+		}
+		.fixed-top .left-icon {
+			position: absolute;
+			left: 10px;
+		}
+		.fixed-top .middle-icon {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.fixed-top .right-icon {
+			position: absolute;
+			right: 10px;
+		}
+		.fixed-bottom {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 30px;
+		}
 
+		.fixed-bottom .right-icon {
+			position: absolute;
+			right: 10px;
+		}
+/* //------------------------------------------------------------- */
 .modal {
   width: var(--width-modal);
   height: 400px;

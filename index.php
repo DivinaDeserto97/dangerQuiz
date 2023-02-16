@@ -6,12 +6,13 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Home</title>
-
+    <link rel="stylesheet" href="css/style.css"/>
     <?php require('./includes/srcUp.php'); ?>
 
 </head>
 <body>
-    <?php require('includes/header.php');?>
+    <?php require('includes/header.php');
+    ?>
     <!-- FORMULAR 'Themenwahl' -->
     <div style='padding: 20px;'>
         <form id='quiz-form' action='question.php' method='post' onsubmit="return navigate('next');">
