@@ -32,8 +32,7 @@
             Wichtig: Sämtliche $_SESSION-Werte müssen fertig gesetzt sein,
                      bevor die Punktzahlen gesammelt werden dürfen.
         */
-        
-        
+
 
         // extract question data
         foreach ($_SESSION as $name => $value) {
@@ -56,8 +55,13 @@
                         }
                     }
                 }
+                if (isset($value['result'])) { 
+                    $points_multiple = floatval($value['result']);
+                    $total_multiple = $total_multiple + $points_multiple; // Kurzform: $totalPoints += $points;
+                }
             }
         }
+
 
         $resultPercent = (100 / $maxPoints) * $achievedPoints;
         //echo $resultPercent;
@@ -84,6 +88,7 @@
         // test
         
         
+
     ?>
 
 
@@ -118,13 +123,12 @@
         <div class='col-sm-8'>
             <!-- Bilanz -->
             <p>&nbsp;</p>
+
             <h3>
                 <?php
                     $text1 = $rowC['16']['englisch'];
                     $text2 = $rowC['17']['englisch'];
                     $text3 = $rowC['18']['englisch'];
-
-                    echo "$text1 $achievedPoints $text2 $maxPoints $text3";
                 ?>
             </h3>
         </div>
