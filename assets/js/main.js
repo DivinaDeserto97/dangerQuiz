@@ -1,22 +1,19 @@
 //alert('test JS');
-
 function workInProrgress() {
-    alert('this funktion is in progress');
+  alert("this funktion is in progress");
 }
 
 function deleteAllCookies() {
+  alert("you start from the beginning");
+  const cookies = document.cookie.split(";");
 
-    alert('you start from the beginning');
-    const cookies = document.cookie.split(';');
-
-    for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i];
-        const eqPos = cookie.indexOf('=');
-        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    }
-    window.location.href = 'index.php';
-
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const eqPos = cookie.indexOf("=");
+    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
+  window.location.href = "index.php";
 }
 
 // NAVIGATION ------------------------------------------------------------------
@@ -58,42 +55,23 @@ function navigate(direction) {
     setActionTarget(actionTarget);
     setElementValue("indexStep", indexStep);
 
+    // Keine weitere Validierung der Antworten: Formular abschicken
+    return true;
+  } else if (pathname.indexOf("/report.php") >= 0) {
+    // report.php ----------------------------------------------------------
 
-    if (pathname === '/' || pathname.indexOf('/index.php') >= 0) {
-        // index.php -----------------------------------------------------------
-        setActionTarget(actionTarget);
-        setElementValue('indexStep', indexStep);
+    /*
+          report.php hat keine Formulardaten, also gibt es auch keine
+          Validierung.
 
-        // Keine weitere Validierung der Eingabefelder: Formular abschicken
-        return true;
-    }
-    else if (pathname.indexOf('/question.php') >= 0) {
-        // question.php --------------------------------------------------------
-        setActionTarget(actionTarget);
-        setElementValue('indexStep', indexStep);
-
-        // Keine weitere Validierung der Antworten: Formular abschicken
-        return true;
-    }
-    else if (pathname.indexOf('/report.php') >= 0) {
-        // report.php ----------------------------------------------------------
-
-        /*
-
-            report.php hat keine Formulardaten, also gibt es auch keine
-            Validierung.
-
-            Die einzige erlaubte Navigation: Neues Quiz starten ab index.php.
-        */
-
-        document.location = '/index.php';
-        return true;
-    }
-    else {
-        // Die aktuelle Seite ist nicht bekannt: Blockiere die weitere Submit-Aktion.
-        return false;
-    }
-
+          Die einzige erlaubte Navigation: Neues Quiz starten ab index.php.
+      */
+    document.location = "/index.php";
+    return true;
+  } else {
+    // Die aktuelle Seite ist nicht bekannt: Blockiere die weitere Submit-Aktion.
+    return false;
+  }
 }
 
 function navigatePrevious() {
@@ -130,6 +108,17 @@ function setActionTarget(url) {
   formElement.action = url;
 }
 
+// FORM VALIDATION ---------------------------------------------------------------------------------------------------------------------
+
+function validateStartParameter() {
+  // TODO
+  return true;
+}
+
+function validateAnswerSelection() {
+  // TODO
+  return true;
+}
 
 // GET THE MODAL------------------------------------------------------------------------------------------------------------------------
 var modal = document.getElementById("session");
@@ -149,34 +138,33 @@ var initialY;
 var xOffset = 0;
 var yOffset = 0;
 
-
-// When the user clicks on the button, open the modal 
+// When the user clicks on the button, open the modal
 btn.onclick = function () {
-    modal.style.display = "block";
-}
+  modal.style.display = "block";
+};
 
 // When the user starts dragging the header
 header.onmousedown = function () {
-    isDragging = true;
-    initialX = event.clientX;
-    initialY = event.clientY;
-}
+  isDragging = true;
+  initialX = event.clientX;
+  initialY = event.clientY;
+};
 
 // When the user stops dragging the header
 header.onmouseup = function () {
-    isDragging = false;
-}
+  isDragging = false;
+};
 
 // When the user moves the mouse while dragging the header
 header.onmousemove = function () {
-    if (isDragging) {
-        currentX = event.clientX;
-        currentY = event.clientY;
-        xOffset = currentX - initialX;
-        yOffset = currentY - initialY;
-        initialX = currentX;
-        initialY = currentY;
-        modal.style.top = (modal.offsetTop + yOffset) + "px";
-        modal.style.left = (modal.offsetLeft + xOffset) + "px";
-    }
-}
+  if (isDragging) {
+    currentX = event.clientX;
+    currentY = event.clientY;
+    xOffset = currentX - initialX;
+    yOffset = currentY - initialY;
+    initialX = currentX;
+    initialY = currentY;
+    modal.style.top = modal.offsetTop + yOffset + "px";
+    modal.style.left = modal.offsetLeft + xOffset + "px";
+  }
+};

@@ -130,8 +130,6 @@
                     $text2 = $rowC['17']['englisch'];
                     $text3 = $rowC['18']['englisch'];
 
-
-                    echo "$text1 $achievedPoints $text2 $maxPoints $text3";
                 ?>
             </h3>
         </div>
