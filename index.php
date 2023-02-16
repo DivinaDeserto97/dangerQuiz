@@ -6,20 +6,17 @@
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel="shortcut icon" href="/assets/images/logos/danger-quiz-high-resolution-logo-white-on-transparent-background.svg" type="image/x-icon">
     <title>Home</title>
-    <link rel="stylesheet" href="css/style.css"/>
+
     <?php require('./includes/srcUp.php'); ?>
 
 </head>
 
 <body>
-<<<<<<< HEAD
-    <?php require('includes/header.php');
-    ?>
-=======
     <?php require('includes/header.php'); ?>
->>>>>>> 49a81f062a031278b2e777be49be922ffa670d06
     <!-- FORMULAR 'Themenwahl' -->
+
     <div class="pre-cont">
         <div class="cont-general">
             <div class="formular">

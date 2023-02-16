@@ -11,8 +11,8 @@ function buttonChangeBrightDark(){
   function changeDark(){
     /* Pictures Bright off */
     document.getElementById('logo').style.display = 'none'; 
-    /* Pictures Dark ein */I
-    document.getElementByd('logo').style.display = 'inline-flex';
+    /* Pictures Dark ein */
+    document.getElementById('logo').style.display = 'inline-flex';
   }
   function changeBright(){
     /* Pictures Bright off */

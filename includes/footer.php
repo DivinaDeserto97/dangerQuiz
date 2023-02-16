@@ -3,7 +3,11 @@
     <div class='col-1'>
         <?php
         if (str_contains($scriptName, 'question')) {
-            echo "<button id='showSession' type='button' class='btn-next'>
+
+            echo "
+                
+                <button id='showSession' type='button' onclick='deleteAllCookies();' class='btn-next'>
+
                     <i class='fa-solid fa-timer' id='next-icon'></i>
                   </button>";
         } elseif (str_contains($scriptName, 'report')) {
@@ -13,9 +17,6 @@
                   </button>";
         }
         ?>
-    </div>
-    <div class='col d-flex justify-content-end d-none d-sm-block'>
-        <h5 id='showSession' class='btn btn-light'>Show Important Array</h5>
     </div>
     <div class='col d-flex justify-content-end'>
         <?php
@@ -35,62 +36,12 @@
 <!-- modal Container -->
 <div id="session" class="modal">
         <!-- modal Header -->
-        <div class='modal-header' style='background-color:red'>
-            <p>Wichtige Array</p>
+        <div class='modal-header bg-dark text-light h-25'>
+            <p class="fw-bold text-center w-100 fs-3 m-0">TIMER</p>
         </div>
         <!-- modal Body -->
-        <div class="modal-body">
-            <p>
-                <div id='display'>00</div>
-                <?php
-
-                    if (isset($quiz['questionIdSequence'])) {
-                        //$id = $quiz['questionIdSequence'][$currentQuestionIndex];
-                    }
-
-                    /* $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
-                    $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
-
-                    $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
-
-                    $row = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC); */
-                    
-
-                    if(isset($_POST)){
-                        prettyPrint($_POST, '$_POST =');
-                    } else {
-                        echo '$_POST = not divined.<br>';
-                    }
-                
-                    if(isset($_SESSION)){
-                        prettyPrint($_SESSION, '$_SESSION =');
-                    } else {
-                        echo '$_SESSION = not divined.<br>';
-                    }
-
-                
-                    if (isset($rowQ)) {
-                        prettyPrint($rowQ, '$rowQ =');
-
-                    } else {
-                        echo '$row = not divined.<br>';
-                    }
-
-                
-                    if (isset($rowA)) {
-                        prettyPrint($rowA, '$rowA =');
-
-                    } else {
-                        echo '$rowA = not divined.<br>';
-                    }
-                
-                    if (isset($rowC)) {
-                        prettyPrint($rowC, '$rowC =');
-                    } else {
-                        echo '$rowC = not divined.<br>';
-                    }
-                        
-                ?>
-            </p>
+        <div class="modal-body h-75">
+                <div id='display' class="timer">
+                </div>
         </div>
 </div>

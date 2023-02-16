@@ -10,7 +10,7 @@
 
     <?php require('./includes/srcUp.php'); ?>
 
-</head> 
+</head>
 <body>
     <?php require('includes/header.php');?>
     
@@ -40,7 +40,7 @@
             <h3><?php echo $question['question']; ?></h3>
             <p>&nbsp;</p>
 
-            <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next'), radioValidate();">
+            <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next')">
                 <?php 
                     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
                     $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
@@ -58,7 +58,7 @@
 
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
-                            
+
                             $tot = 1;
 
                             foreach($rowA as $value){
@@ -144,6 +144,7 @@
     </div>
 
     </div>
-<script src="assets/js/main.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
