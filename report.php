@@ -65,40 +65,32 @@
 
         $resultPercent = (100 / $maxPoints) * $achievedPoints;
         //echo $resultPercent;
-
+       
 
         $text_result;
         if ($resultPercent <= 30) {
             $text_result = $rowC['24']['englisch'];
+            $img = $rowI['2']['pfad'];
         } elseif ($resultPercent > 30 && $resultPercent <= 60) {
-
             $text_result = $rowC['19']['englisch'];
-
+            $img = $rowI['3']['pfad'];
         } elseif ($resultPercent > 60 && $resultPercent <= 80) {
             $text_result = $rowC['20']['englisch'];
-
+            $img = $rowI['4']['pfad'];
         } elseif ($resultPercent > 80 && $resultPercent <= 95) {
             $text_result = $rowC['21']['englisch'];
-
+            $img = $rowI['5']['pfad'];
         } elseif ($resultPercent > 95 && $resultPercent <= 100) {
             $text_result = $rowC['22']['englisch'];
-
+            $img = $rowI['6']['pfad'];
         }
 
         // test
         
-        
+         $pfad ='/assets/images/resultPageImages/'. $img;
 
     ?>
 
-<audio id="sound0" src="assets/audio/sound0.mp3" autoplay="autoplay"></audio>
-<script>
-
-window.onload = function() {
-    document.getElementById("sound0").play();
-}
-
-</script>
 
 <div class="pre-cont">
     <div class="cont-result">
@@ -114,6 +106,7 @@ window.onload = function() {
                             $text3 = $rowC['18']['englisch'];
 
                             echo "$text1 $achievedPoints $text2 $maxPoints $text3";
+                            
                         ?>
                     </h3>
                 </div>
@@ -124,7 +117,7 @@ window.onload = function() {
 
             </div>
             <div class="result-img">
-                <img src="/assets/images/indexPageImages/owl-gif-animated.gif"  alt="owl gif">
+                <img src='<?php echo $pfad ?>'  alt="owl gif">
             </div>
 
     <div class='row' style='padding: 20px;'>
