@@ -40,13 +40,21 @@
             <h3><?php echo $question['question']; ?></h3>
             <p>&nbsp;</p>
 
-            <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next'), radioValidate();">
+            <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next')">
                 <?php 
                     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
                     $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
                     
                     $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
+                    $img = $rowQ['image'];
+                    echo "$img<br>";
+
+                    $img = $rowQ['image'];
+                    $path = 'assets/images/topic/'. $img;
+                    
+                    $img_dark = $rowQ['img-dark'];
+                    $path_dark = 'assets/images/topic/'. $img_dark;
 
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
@@ -55,7 +63,7 @@
 
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
-                                $img = $value[''];
+
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
 
@@ -69,7 +77,6 @@
                                             $text
                                         </label>
                                       </div>";
-                                      $c++;
                             }
                         } elseif ($rowQ['type'] === 'MULTIPLE'){
                             $tot= 0;
@@ -127,12 +134,17 @@
             </form>
         </div>
 
-        <div class="cont-img">
-                <img src="assets/images/questionPageTopicImages/ZappaSolo.gif" class="d-none d-lg-block" alt="owl gif">
-            </div>
+        <div class='cont-img'>
+                <img src='<?php echo $path; ?>' class='d-none d-lg-block' alt='owl gif'>
+        </div>
+        <div class='cont-img' style='display:none;'>
+                <img src='<?php echo $path_dark; ?>' class='d-none d-lg-block' alt='owl gif'>
+        </div>
+
     </div>
 
     </div>
-<script src="assets/js/main.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
