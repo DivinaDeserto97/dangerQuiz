@@ -51,8 +51,9 @@
                     echo "$img<br>";
 
                     $img = $rowQ['image'];
+                    $img_dark = $rowQ['img-dark'];
                     $path = 'assets/images/topic/'. $img;
-
+                    $path_dark = ;
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
                             
@@ -131,10 +132,13 @@
             </form>
         </div>
 
-        <div class="cont-img">
+        <div class='cont-img'>
+                <img src='<?php echo $path; ?>' class='d-none d-lg-block' alt='owl gif'>
+        </div>
+        <div class='cont-img' style='display:none;'>
+                <img src='<?php echo $path_dark; ?>' class='d-none d-lg-block' alt='owl gif'>
+        </div>
 
-                <img src='<?php echo $img; ?>' class='d-none d-lg-block' alt='owl gif'>
-            </div>
     </div>
 
     </div>
