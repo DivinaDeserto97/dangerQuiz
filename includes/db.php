@@ -18,6 +18,8 @@ $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sqlStatementContent = $dbConnection->query("SELECT * FROM `img` WHERE  1");
     $rowI = $sqlStatementContent->fetchAll(PDO::FETCH_ASSOC);
 
+    //print_r($rowI);
+
     $sqlStatementThemen = $dbConnection->query("SELECT * FROM `content` WHERE `tag` BETWEEN 'ch-norris' AND 'basketball'");
     $rowT = $sqlStatementThemen->fetchAll(PDO::FETCH_ASSOC);
 
