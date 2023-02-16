@@ -130,10 +130,11 @@
     width: 40%;
     display: flex;
     align-items: center;
+    justify-content:center;
   }
 
   .result-img img {
-    width: 100%;
+    width: 60%;
   }
 
   @media(max-width: 575px) {
@@ -156,6 +157,9 @@
     .result-text {
       width: 100%;
     }
+    .result-img img {
+      width: 100%;
+  }
   }
 
   /* ---------------------------------------------------------------------------- */
