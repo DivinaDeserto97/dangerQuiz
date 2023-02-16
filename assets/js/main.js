@@ -55,6 +55,7 @@ function navigate(direction) {
     setActionTarget(actionTarget);
     setElementValue("indexStep", indexStep);
 
+
     // Keine weitere Validierung der Antworten: Formular abschicken
     return true;
   } else if (pathname.indexOf("/report.php") >= 0) {
@@ -86,57 +87,57 @@ function getIndexStep(direction) {
   else return 0;
 }
 
-function getElementValue(fieldId, defaultValue) {
-  let inputElement = document.getElementById(fieldId);
 
-  if (inputElement) {
-    // Verwende parseInt(), um den String-Wert in einen Integer zu verwandeln.
-    return inputElement.value;
-  } else {
-    // In der aktuelle Seite fehlt das Feld: Default-Wert zurückgeben.
-    return defaultValue;
+  function navigatePrevious() {
+    let formElement = document.getElementById("quiz-form");
+    formElement.setAttribute("onsubmit", "return navigate('previous');");
+    // formElement.submit();
   }
-}
 
-function setElementValue(fieldId, value) {
-  let inputElement = document.getElementById(fieldId);
-  if (inputElement) inputElement.value = value;
-}
+  function getIndexStep(direction) {
+    if (direction === "next") return 1;
+    else if (direction === "previous") return -1;
+    else return 0;
+  }
 
-function setActionTarget(url) {
-  let formElement = document.getElementById("quiz-form");
-  formElement.action = url;
-}
+  function getElementValue(fieldId, defaultValue) {
+    let inputElement = document.getElementById(fieldId);
+
+    if (inputElement) {
+      // Verwende parseInt(), um den String-Wert in einen Integer zu verwandeln.
+      return inputElement.value;
+    } else {
+      // In der aktuelle Seite fehlt das Feld: Default-Wert zurückgeben.
+      return defaultValue;
+    }
+  }
+
 
 // FORM VALIDATION ---------------------------------------------------------------------------------------------------------------------
 
 function validateStartParameter() {
-  // TODO
   return true;
 }
 
 function validateAnswerSelection() {
-  // TODO
   return true;
 }
 
-// GET THE MODAL------------------------------------------------------------------------------------------------------------------------
-var modal = document.getElementById("session");
 
-// Get the button that opens the modal
-var btn = document.getElementById("showSession");
+  function setActionTarget(url) {
+    let formElement = document.getElementById("quiz-form");
+    formElement.action = url;
+  }
 
-// Get the modal header
-var header = document.getElementsByClassName("modal-header")[0];
+  // GET THE MODAL------------------------------------------------------------------------------------------------------------------------
+  var modal = document.getElementById("session");
 
-// Variables for dragging the modal
-var isDragging = false;
-var currentX;
-var currentY;
-var initialX;
-var initialY;
-var xOffset = 0;
-var yOffset = 0;
+  // Get the button that opens the modal
+  var btn = document.getElementById("showSession");
+
+  // Get the modal header
+  var header = document.getElementsByClassName("modal-header")[0];
+
 
 // When the user clicks on the button, open the modal
 btn.onclick = function () {
@@ -168,3 +169,4 @@ header.onmousemove = function () {
     modal.style.left = modal.offsetLeft + xOffset + "px";
   }
 };
+

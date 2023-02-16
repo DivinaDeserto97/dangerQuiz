@@ -47,15 +47,23 @@
                     
                     $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
+                    $img = $rowQ['image'];
+                    echo "$img<br>";
+
+                    $img = $rowQ['image'];
+                    $path = 'assets/images/topic/'. $img;
+                    
+                    $img_dark = $rowQ['img-dark'];
+                    $path_dark = 'assets/images/topic/'. $img_dark;
 
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
-                            $img = $rowQ['image'];
+
                             $tot = 1;
 
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
-                                
+
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
 
@@ -72,7 +80,6 @@
                             }
                         } elseif ($rowQ['type'] === 'MULTIPLE'){
                             $tot= 0;
-                            $img = $rowQ['image'];
 
                             foreach($rowA as $value){
                                 $awserID = $value['id'];
@@ -127,9 +134,13 @@
             </form>
         </div>
 
-        <div class="cont-img">
-                <img src="assets/images/questionPageTopicImages/ZappaSolo.gif" class="d-none d-lg-block" alt="owl gif">
-            </div>
+        <div class='cont-img'>
+                <img src='<?php echo $path; ?>' class='d-none d-lg-block' alt='owl gif'>
+        </div>
+        <div class='cont-img' style='display:none;'>
+                <img src='<?php echo $path_dark; ?>' class='d-none d-lg-block' alt='owl gif'>
+        </div>
+
     </div>
 
     </div>
