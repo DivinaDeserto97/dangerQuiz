@@ -51,9 +51,11 @@
                     echo "$img<br>";
 
                     $img = $rowQ['image'];
-                    $img_dark = $rowQ['img-dark'];
                     $path = 'assets/images/topic/'. $img;
-                    $path_dark = ;
+                    
+                    $img_dark = $rowQ['img-dark'];
+                    $path_dark = 'assets/images/topic/'. $img_dark;
+
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
                             
