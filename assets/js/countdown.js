@@ -44,3 +44,4 @@ function updateCounter() {
 function pressNext(){
     document.getElementById('nextQuestion').click(); // drückt button mit der id 'nextQuestion'.
 }
+startCountdown();
