@@ -131,7 +131,7 @@
 
         <div class="cont-img">
 
-                <img src='<?php echo $img; ?>' class="d-none d-lg-block" alt="owl gif">
+                <img src='<?php echo $img; ?>' class='d-none d-lg-block' alt='owl gif'>
             </div>
     </div>
 

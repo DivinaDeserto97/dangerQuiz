@@ -15,7 +15,6 @@
 <body>
     <?php require('includes/header.php'); ?>
     <!-- FORMULAR 'Themenwahl' -->
-    <h1 class='text-center'>Danger Quiz</h1>
     <div class="pre-cont">
         <div class="cont-general">
             <div class="formular">
