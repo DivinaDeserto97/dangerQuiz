@@ -1,6 +1,5 @@
 <!---------------------------------------------------------- css -------------------------------------------------------------------->
-<!-- mycss -->
-<link rel='stylesheet' href='../assets/css/style.css'>
+
 <!-- Bootstrap -->
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'>
 <!-- font awsom -->
@@ -10,12 +9,10 @@
 <!----------------------------------------------------------- js -------------------------------------------------------------------->
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'></script>
 <script src='../assets/js/main.js' defer></script>
+<script src='../assets/js/countdown.js'></script>
 
-<!----------------------------------------------------------- js -------------------------------------------------------------------->
-<style>
-:root{
-  --width-modal: 400px;
 
+<<<<<<< HEAD
   --backgruod-dark: black;
 }
 body {
@@ -133,3 +130,9 @@ function pressNext(){
 }
 
 </script>
+=======
+<!----------------------------------------------------------- php -------------------------------------------------------------------->
+<?php
+require('assets/css/style.php');
+?>
+>>>>>>> 49a81f062a031278b2e777be49be922ffa670d06
