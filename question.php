@@ -47,15 +47,17 @@
                     
                     $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
+                    $img = $rowQ['image'];
+                    echo "$img<br>";
 
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
-
+                            
                             $tot = 1;
 
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
-                                $img = $value[''];
+                                
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
 
@@ -69,7 +71,6 @@
                                             $text
                                         </label>
                                       </div>";
-                                      $c++;
                             }
                         } elseif ($rowQ['type'] === 'MULTIPLE'){
                             $tot= 0;
