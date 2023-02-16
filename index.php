@@ -64,9 +64,9 @@
             //print_r($rowI);
                 $img = $rowI['1']['pfad'];
             
-                $pfad = '/assets/images/indexPagelmages/' . $img;    
+                $pfad = '/assets/images/indexPageImages/' . $img;    
                 $img_dark = $rowI['1']['pfad-dark'];
-                $path_dark = '/assets/images/indexPagelmages/'. $img_dark;
+                $path_dark = '/assets/images/indexPageImages/'. $img_dark;
             ?>
             <div class='cont-img'>
                 <img src='<?php echo $pfad;?>' class='d-none d-sm-block' alt='owl gif'>
