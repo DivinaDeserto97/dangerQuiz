@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Feb 14, 2023 at 09:55 AM
--- Server version: 8.0.32
--- PHP Version: 8.0.19
+-- Erstellungszeit: 16. Feb 2023 um 10:53
+-- Server-Version: 8.0.31
+-- PHP-Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quiz`
+-- Datenbank: `quiz`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `answers`
+-- Tabellenstruktur für Tabelle `answers`
 --
 
 CREATE TABLE `answers` (
@@ -35,7 +35,7 @@ CREATE TABLE `answers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `answers`
+-- Daten für Tabelle `answers`
 --
 
 INSERT INTO `answers` (`id`, `text`, `is_correct`, `question_id`) VALUES
@@ -1135,32 +1135,32 @@ INSERT INTO `answers` (`id`, `text`, `is_correct`, `question_id`) VALUES
 (2043, 'put the css in a separate \".css\" file', 0, 1112);
 
 --
--- Indexes for dumped tables
+-- Indizes der exportierten Tabellen
 --
 
 --
--- Indexes for table `answers`
+-- Indizes für die Tabelle `answers`
 --
 ALTER TABLE `answers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `answers_ibfk_1` (`question_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT für exportierte Tabellen
 --
 
 --
--- AUTO_INCREMENT for table `answers`
+-- AUTO_INCREMENT für Tabelle `answers`
 --
 ALTER TABLE `answers`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2044;
 
 --
--- Constraints for dumped tables
+-- Constraints der exportierten Tabellen
 --
 
 --
--- Constraints for table `answers`
+-- Constraints der Tabelle `answers`
 --
 ALTER TABLE `answers`
   ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
