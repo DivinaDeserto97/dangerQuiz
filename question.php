@@ -6,6 +6,7 @@
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel="shortcut icon" href="assets/images/logos/logo-white-on-transp.png" type="image/x-icon">
     <title>Question</title>
 
     <?php require('./includes/srcUp.php'); ?>
@@ -40,7 +41,7 @@
             <h3><?php echo $question['question']; ?></h3>
             <p>&nbsp;</p>
 
-            <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next'), radioValidate();">
+            <form id='quiz-form' action='<?php echo $actionUrl; ?>' method='post' onsubmit="return navigate('next')">
                 <?php 
                     $sqlStatementQuestion = $dbConnection->query("SELECT * FROM `questions` WHERE `id` = $id");
                     $rowQ = $sqlStatementQuestion->fetch(PDO::FETCH_ASSOC);
@@ -48,7 +49,7 @@
                     $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
                     $img = $rowQ['image'];
-                    echo "$img<br>";
+                    
 
                     $img = $rowQ['image'];
                     $path = 'assets/images/topic/'. $img;
@@ -58,7 +59,7 @@
 
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
-                            
+
                             $tot = 1;
 
                             foreach($rowA as $value){
@@ -144,6 +145,7 @@
     </div>
 
     </div>
-<script src="assets/js/main.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
