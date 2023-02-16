@@ -61,11 +61,11 @@
                     </form>
             </div>
 
-            <div class="cont-img">
-                <img src="/assets/images/indexPageImages/owl-gif-animated.gif" class="d-none d-sm-block" alt="owl gif">
+            <div class='cont-img'>
+                <img src='/assets/images/indexPageImages/owl-gif-animated.gif' class='d-none d-sm-block' alt='owl gif'>
             </div>
-            <div class="cont-img" style="display: none;" >
-                <img src="/assets/images/indexPageImages/owl-gif-animated.gif" alt="owl gif">
+            <div class='cont-img' style='display: none;' >
+                <img src='/assets/images/indexPageImages/owl-gif-animated.gif' alt='owl gif'>
             </div>
         </div>
 </div>
