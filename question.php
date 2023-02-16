@@ -50,6 +50,10 @@
                     $img = $rowQ['image'];
                     echo "$img<br>";
 
+                    $img = $rowQ['image'];
+                    $img_dark = $rowQ['img-dark'];
+                    $path = 'assets/images/topic/'. $img;
+                    $path_dark = ;
                     if((isset($rowQ)) && (isset($rowA))){
                         if($rowQ['type'] === 'SINGLE'){
                             
@@ -57,7 +61,7 @@
 
                             foreach($rowA as $value){
                                 $awserID = 'awnser' . $value['id'];
-                                
+
                                 $text = $value['text'];
                                 $correct = $value['is_correct'];
 
@@ -128,9 +132,13 @@
             </form>
         </div>
 
-        <div class="cont-img">
-                <img src="assets/images/questionPageTopicImages/ZappaSolo.gif" class="d-none d-lg-block" alt="owl gif">
-            </div>
+        <div class='cont-img'>
+                <img src='<?php echo $path; ?>' class='d-none d-lg-block' alt='owl gif'>
+        </div>
+        <div class='cont-img' style='display:none;'>
+                <img src='<?php echo $path_dark; ?>' class='d-none d-lg-block' alt='owl gif'>
+        </div>
+
     </div>
 
     </div>
