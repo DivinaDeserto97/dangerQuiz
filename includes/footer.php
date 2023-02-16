@@ -3,7 +3,7 @@
     <div class='col-1'>
         <?php
         if (str_contains($scriptName, 'question')) {
-            echo "<button type='button' onclick='deleteAllCookies();' class='btn-next'>
+            echo "<button id='showSession' type='button' class='btn-next'>
                     <i class='fa-solid fa-timer' id='next-icon'></i>
                   </button>";
         } elseif (str_contains($scriptName, 'report')) {
