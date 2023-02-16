@@ -130,7 +130,6 @@
                     $text1 = $rowC['16']['englisch'];
                     $text2 = $rowC['17']['englisch'];
                     $text3 = $rowC['18']['englisch'];
-
                 ?>
             </h3>
         </div>
