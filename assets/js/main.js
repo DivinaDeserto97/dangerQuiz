@@ -1,22 +1,20 @@
 //alert('test JS');
 
 function workInProrgress() {
-    alert('this funktion is in progress');
+  alert("this funktion is in progress");
 }
 
 function deleteAllCookies() {
+  alert("you start from the beginning");
+  const cookies = document.cookie.split(";");
 
-    alert('you start from the beginning');
-    const cookies = document.cookie.split(';');
-
-    for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i];
-        const eqPos = cookie.indexOf('=');
-        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    }
-    window.location.href = 'index.php';
-
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const eqPos = cookie.indexOf("=");
+    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
+  window.location.href = "index.php";
 }
 
 // NAVIGATION ------------------------------------------------------------------
@@ -58,27 +56,24 @@ function navigate(direction) {
     setActionTarget(actionTarget);
     setElementValue("indexStep", indexStep);
 
+    if (pathname === "/" || pathname.indexOf("/index.php") >= 0) {
+      // index.php -----------------------------------------------------------
+      setActionTarget(actionTarget);
+      setElementValue("indexStep", indexStep);
 
-    if (pathname === '/' || pathname.indexOf('/index.php') >= 0) {
-        // index.php -----------------------------------------------------------
-        setActionTarget(actionTarget);
-        setElementValue('indexStep', indexStep);
+      // Keine weitere Validierung der Eingabefelder: Formular abschicken
+      return true;
+    } else if (pathname.indexOf("/question.php") >= 0) {
+      // question.php --------------------------------------------------------
+      setActionTarget(actionTarget);
+      setElementValue("indexStep", indexStep);
 
-        // Keine weitere Validierung der Eingabefelder: Formular abschicken
-        return true;
-    }
-    else if (pathname.indexOf('/question.php') >= 0) {
-        // question.php --------------------------------------------------------
-        setActionTarget(actionTarget);
-        setElementValue('indexStep', indexStep);
+      // Keine weitere Validierung der Antworten: Formular abschicken
+      return true;
+    } else if (pathname.indexOf("/report.php") >= 0) {
+      // report.php ----------------------------------------------------------
 
-        // Keine weitere Validierung der Antworten: Formular abschicken
-        return true;
-    }
-    else if (pathname.indexOf('/report.php') >= 0) {
-        // report.php ----------------------------------------------------------
-
-        /*
+      /*
 
             report.php hat keine Formulardaten, also gibt es auch keine
             Validierung.
@@ -86,97 +81,94 @@ function navigate(direction) {
             Die einzige erlaubte Navigation: Neues Quiz starten ab index.php.
         */
 
-        document.location = '/index.php';
-        return true;
+      document.location = "/index.php";
+      return true;
+    } else {
+      // Die aktuelle Seite ist nicht bekannt: Blockiere die weitere Submit-Aktion.
+      return false;
     }
-    else {
-        // Die aktuelle Seite ist nicht bekannt: Blockiere die weitere Submit-Aktion.
-        return false;
-    }
-
-}
-
-function navigatePrevious() {
-  let formElement = document.getElementById("quiz-form");
-  formElement.setAttribute("onsubmit", "return navigate('previous');");
-  // formElement.submit();
-}
-
-function getIndexStep(direction) {
-  if (direction === "next") return 1;
-  else if (direction === "previous") return -1;
-  else return 0;
-}
-
-function getElementValue(fieldId, defaultValue) {
-  let inputElement = document.getElementById(fieldId);
-
-  if (inputElement) {
-    // Verwende parseInt(), um den String-Wert in einen Integer zu verwandeln.
-    return inputElement.value;
-  } else {
-    // In der aktuelle Seite fehlt das Feld: Default-Wert zurückgeben.
-    return defaultValue;
   }
-}
 
-function setElementValue(fieldId, value) {
-  let inputElement = document.getElementById(fieldId);
-  if (inputElement) inputElement.value = value;
-}
+  function navigatePrevious() {
+    let formElement = document.getElementById("quiz-form");
+    formElement.setAttribute("onsubmit", "return navigate('previous');");
+    // formElement.submit();
+  }
 
-function setActionTarget(url) {
-  let formElement = document.getElementById("quiz-form");
-  formElement.action = url;
-}
+  function getIndexStep(direction) {
+    if (direction === "next") return 1;
+    else if (direction === "previous") return -1;
+    else return 0;
+  }
 
+  function getElementValue(fieldId, defaultValue) {
+    let inputElement = document.getElementById(fieldId);
 
-// GET THE MODAL------------------------------------------------------------------------------------------------------------------------
-var modal = document.getElementById("session");
+    if (inputElement) {
+      // Verwende parseInt(), um den String-Wert in einen Integer zu verwandeln.
+      return inputElement.value;
+    } else {
+      // In der aktuelle Seite fehlt das Feld: Default-Wert zurückgeben.
+      return defaultValue;
+    }
+  }
 
-// Get the button that opens the modal
-var btn = document.getElementById("showSession");
+  function setElementValue(fieldId, value) {
+    let inputElement = document.getElementById(fieldId);
+    if (inputElement) inputElement.value = value;
+  }
 
-// Get the modal header
-var header = document.getElementsByClassName("modal-header")[0];
+  function setActionTarget(url) {
+    let formElement = document.getElementById("quiz-form");
+    formElement.action = url;
+  }
 
-// Variables for dragging the modal
-var isDragging = false;
-var currentX;
-var currentY;
-var initialX;
-var initialY;
-var xOffset = 0;
-var yOffset = 0;
+  // GET THE MODAL------------------------------------------------------------------------------------------------------------------------
+  var modal = document.getElementById("session");
 
+  // Get the button that opens the modal
+  var btn = document.getElementById("showSession");
 
-// When the user clicks on the button, open the modal 
-btn.onclick = function () {
+  // Get the modal header
+  var header = document.getElementsByClassName("modal-header")[0];
+
+  // Variables for dragging the modal
+  var isDragging = false;
+  var currentX;
+  var currentY;
+  var initialX;
+  var initialY;
+  var xOffset = 0;
+  var yOffset = 0;
+
+  // When the user clicks on the button, open the modal
+  btn.onclick = function () {
     modal.style.display = "block";
-}
+  };
 
-// When the user starts dragging the header
-header.onmousedown = function () {
+  // When the user starts dragging the header
+  header.onmousedown = function () {
     isDragging = true;
     initialX = event.clientX;
     initialY = event.clientY;
-}
+  };
 
-// When the user stops dragging the header
-header.onmouseup = function () {
+  // When the user stops dragging the header
+  header.onmouseup = function () {
     isDragging = false;
-}
+  };
 
-// When the user moves the mouse while dragging the header
-header.onmousemove = function () {
+  // When the user moves the mouse while dragging the header
+  header.onmousemove = function () {
     if (isDragging) {
-        currentX = event.clientX;
-        currentY = event.clientY;
-        xOffset = currentX - initialX;
-        yOffset = currentY - initialY;
-        initialX = currentX;
-        initialY = currentY;
-        modal.style.top = (modal.offsetTop + yOffset) + "px";
-        modal.style.left = (modal.offsetLeft + xOffset) + "px";
+      currentX = event.clientX;
+      currentY = event.clientY;
+      xOffset = currentX - initialX;
+      yOffset = currentY - initialY;
+      initialX = currentX;
+      initialY = currentY;
+      modal.style.top = modal.offsetTop + yOffset + "px";
+      modal.style.left = modal.offsetLeft + xOffset + "px";
     }
+  }
 }
