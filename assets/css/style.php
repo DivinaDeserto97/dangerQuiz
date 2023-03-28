@@ -35,7 +35,8 @@
 
   #home-icon:hover,
   #darkMode-icon:hover,
-  #next-icon:hover {
+  #next-icon:hover,
+  .link:hover {
     color: #660708;
   }
 
@@ -120,6 +121,7 @@
   .cont-result {
     width: 95%;
     display: flex;
+    justify-content:space-evenly;
   }
 
   .result-text {
@@ -130,16 +132,17 @@
   width: 40%;
   display:flex;
   align-items:center;
+  justify-content:center;
 }
 .result-img img{
-  width:100%;
+  width:60%;
 }
 
 /* ---------------------------------------------------------------------------- */
     
 .modal {
   width: 25%;
-  height: 50%;
+  height: 45%;
   display: none;
   position: fixed;
   top: 20%;
@@ -195,6 +198,9 @@
       .cont-result{
         flex-direction:column-reverse;
         align-items:center;
+      }
+      .result-img img{
+        width:60%;
       }
       .result-text{
         width: 100%;

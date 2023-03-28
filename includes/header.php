@@ -17,8 +17,8 @@ $pfad = '/assets/images/logos/' . $img;
                 <?php echo $rowI['0']['blob-dark'];?>
         </span>
 		<span class='right-icon bi bi-mask h-100'>
-            <button class='link p-0'>
-                <i class='fa-solid fa-circle-half-stroke' id="darkMode-icon"></i>
+            <button class='link p-0 ds-none'>
+                <i class='fa-solid fa-circle-half-stroke' style='display:none' id="darkMode-icon"></i>
             </button>
         </span>
 </header>

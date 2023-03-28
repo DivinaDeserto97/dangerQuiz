@@ -6,11 +6,12 @@
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel="shortcut icon" href="assets/images/logos/logo-white-on-transp.png" type="image/x-icon">
     <title>Question</title>
 
     <?php require('./includes/srcUp.php'); ?>
 
-</head>
+</head> 
 <body>
     <?php require('includes/header.php');?>
     
@@ -48,7 +49,7 @@
                     $sqlStatementAwnser = $dbConnection->query("SELECT * FROM `answers` WHERE `question_id` = $id");
                     $rowA = $sqlStatementAwnser->fetchAll(PDO::FETCH_ASSOC);
                     $img = $rowQ['image'];
-                    echo "$img<br>";
+                    
 
                     $img = $rowQ['image'];
                     $path = 'assets/images/topic/'. $img;
