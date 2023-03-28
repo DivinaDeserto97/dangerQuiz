@@ -22,4 +22,4 @@
    Retro Link: https://docs.google.com/presentation/d/1Q8RiELPaLNn1KPbjgC9JvZqbPhKlJeu4iMvH_j4FWeA/edit#slide=id.g20c467e1e84_2_66
 
 Additional project resources (including team contract, library.sql, db-scheme.pdf, retrospective presentation) can be found in the project repository at the above Github link..
->>>>>>> mayckell
+
