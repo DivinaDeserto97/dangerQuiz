@@ -11,7 +11,7 @@
 
     <?php require('./includes/srcUp.php'); ?>
 
-</head>
+</head> 
 <body>
     <?php require('includes/header.php');?>
     
